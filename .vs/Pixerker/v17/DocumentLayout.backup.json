@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Unity Projects\\Pixerker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|d:\\unity projects\\pixerker\\assets\\scripts\\sword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|d:\\unity projects\\pixerker\\assets\\scripts\\damagesource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\damagesource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\slashanim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\slashanim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\activeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\activeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\enemypathfinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemypathfinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DamageSource.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\DamageSource.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DamageSource.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\DamageSource.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DamageSource.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T00:43:47.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SlashAnim.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\SlashAnim.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SlashAnim.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\SlashAnim.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SlashAnim.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T00:12:27.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ActiveWeapon.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\ActiveWeapon.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ActiveWeapon.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\ActiveWeapon.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ActiveWeapon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-10T23:42:31.896Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Sword.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Sword.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Sword.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Sword.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Sword.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCEAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-10T23:23:25.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EnemyPathfinding.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\EnemyPathfinding.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyPathfinding.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\EnemyPathfinding.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyPathfinding.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-10T22:51:56.337Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyAI.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyAI.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwCQAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-10T22:45:09.021Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAswEcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T19:09:45.805Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

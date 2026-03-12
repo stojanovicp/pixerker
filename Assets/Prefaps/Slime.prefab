@@ -100,7 +100,10 @@ GameObject:
   - component: {fileID: 2776757438531504289}
   - component: {fileID: 7656244079067456798}
   - component: {fileID: 600719886819549990}
+  - component: {fileID: 7675027894399682866}
   - component: {fileID: 1028691774309079412}
+  - component: {fileID: 44574769868944206}
+  - component: {fileID: -1093538416026384838}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -255,6 +258,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefc682f409cdee46a8a6cc9a560b877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7675027894399682866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8271492522172504985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98d003c31c414794780781ca03fed3d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 3
+  deathVFXPrefab: {fileID: 4572668514380936244, guid: 5160a619669bd8f428ce50a67293bf66, type: 3}
 --- !u!114 &1028691774309079412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,3 +285,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+--- !u!114 &44574769868944206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8271492522172504985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32dca7eb9a38c244593202d7327cf97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.2
+--- !u!114 &-1093538416026384838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8271492522172504985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f770d4038a63bd94796f9aa74b91ebbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 2100000, guid: c362974ef68aa034eb5500b8d2f402e9, type: 2}
+  restoreDefaultMatTime: 0.15

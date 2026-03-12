@@ -427,6 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570b38aa7d927e64cbe6d308034cd4f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 1
 --- !u!4 &335199561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6806683901032607999, guid: ea3dd7905e7b0af4aa6f775af9809c31, type: 3}
@@ -710,7 +711,7 @@ SortingGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610777746}
-  m_Enabled: 1
+  m_Enabled: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
@@ -2282,6 +2283,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7675027894399682866, guid: 03da28567ea4d9a42ac5d535812ccbd9, type: 3}
+      propertyPath: deathVFXPrefab
+      value: 
+      objectReference: {fileID: 4572668514380936244, guid: 5160a619669bd8f428ce50a67293bf66, type: 3}
     - target: {fileID: 8271492522172504985, guid: 03da28567ea4d9a42ac5d535812ccbd9, type: 3}
       propertyPath: m_Name
       value: Slime

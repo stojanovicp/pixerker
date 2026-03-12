@@ -6,30 +6,23 @@ public class EnemyPathfinding : MonoBehaviour
 
     private Vector2 moveDir;
     private Rigidbody2D rb;
-    //private Animator myAnimator;
     private SpriteRenderer spriteRenderer;
+    private Knockback knockback;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        //myAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    private void Update()
-    {
-        RandomInput();
+        knockback = GetComponent<Knockback>();
     }
 
     private void FixedUpdate()
     {
+        if (knockback.gettingKnockback)
+            return;
+
         Flip();
         Move();
-    }
-    private void RandomInput()
-    {
-        //myAnimator.SetFloat("moveX", moveDir.x);
-        //myAnimator.SetFloat("moveY", moveDir.y);
     }
 
     private void Move()

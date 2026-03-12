@@ -5,7 +5,8 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int startingHealth = 3;
     [SerializeField] private GameObject deathVFXPrefab;
-
+    [SerializeField] private float knockBackThrust = 15f;
+ 
     private int currentHealth;
     private Knockback knockback;
     private Flash flash;

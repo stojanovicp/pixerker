@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     public bool FacingLeft { get { return facingLeft; } private set { facingLeft = value; } }
-    public static PlayerController Instance;
      
     private float moveSpeed = 4f;
     private float dashSpeed = 5f;
@@ -24,9 +24,10 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false;
 
 
-    private void Awake()
+    protected override void Awake()
     {
-        Instance = this; 
+        base.Awake();
+
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -35,18 +36,26 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        playerControls.Combat.Dash.performed += _ => Dash();
         startingMoveSpeed = moveSpeed;
     }
 
     private void OnEnable()
     {
+        if (playerControls == null)
+            playerControls = new PlayerControls();
+
         playerControls.Enable();
+        playerControls.Combat.Dash.performed += OnDashPerformed;
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        // Defensive: input system can call OnDisable during scene transitions when objects may be partially torn down.
+        if (playerControls != null)
+        {
+            playerControls.Combat.Dash.performed -= OnDashPerformed;
+            playerControls.Disable();
+        }
     }   
 
     private void Update()
@@ -59,22 +68,32 @@ public class PlayerController : MonoBehaviour
         Flip();
         Move();
     }
+
     private void PlayerInput()
     {
+        if (playerControls == null)
+            return;
+
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
 
-        myAnimator.SetFloat("moveX", movement.x);
-        myAnimator.SetFloat("moveY", movement.y);
+        if (myAnimator != null)
+        {
+            myAnimator.SetFloat("moveX", movement.x);
+            myAnimator.SetFloat("moveY", movement.y);
+        }
     }
 
     private void Move()
     {
+        if (rb == null) return;
         Vector2 newPosition = rb.position + movement * (moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(newPosition);
     }
 
     private void Flip()
     {
+        if (spriteRenderer == null || Camera.main == null) return;
+
         var mousePosition = Input.mousePosition;
         var playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
         if (mousePosition.x < playerScreenPosition.x)
@@ -95,7 +114,7 @@ public class PlayerController : MonoBehaviour
         {
             isDashing = true;
             moveSpeed *= dashSpeed;
-            myTrailRenderer.emitting = true;
+            if (myTrailRenderer != null) myTrailRenderer.emitting = true;
             StartCoroutine(EndDashRoutine());
         }
     }
@@ -104,8 +123,10 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(dashTime);
         moveSpeed = startingMoveSpeed;
-        myTrailRenderer.emitting = false;
+        if (myTrailRenderer != null) myTrailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCD);
         isDashing = false;
     }
+
+    private void OnDashPerformed(InputAction.CallbackContext ctx) => Dash();
 }

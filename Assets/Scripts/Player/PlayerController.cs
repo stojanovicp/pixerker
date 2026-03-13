@@ -13,12 +13,15 @@ public class PlayerController : Singleton<PlayerController>
     private float startingMoveSpeed;
 
     [SerializeField] private TrailRenderer myTrailRenderer;
+    [SerializeField] private Transform weaponCollider;
+    [SerializeField] private Transform slashAnimSpawnPoint; // <-- added serialized field
 
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator myAnimator;
     private SpriteRenderer spriteRenderer;
+    private Knockback knockback;
 
     private bool facingLeft = false;
     private bool isDashing = false;
@@ -32,6 +35,7 @@ public class PlayerController : Singleton<PlayerController>
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        knockback = GetComponent<Knockback>();
     }
 
     private void Start()
@@ -68,6 +72,16 @@ public class PlayerController : Singleton<PlayerController>
         Flip();
         Move();
     }
+    public Transform GetWeaponCollider()
+    {
+        return weaponCollider;
+    }
+
+    // New getter for slash animation spawn point
+    public Transform GetSlashAnimSpawnPoint()
+    {
+        return slashAnimSpawnPoint;
+    }
 
     private void PlayerInput()
     {
@@ -85,7 +99,10 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Move()
     {
-        if (rb == null) return;
+        if(knockback != null && knockback.GettingKnockback)
+            return; 
+        if (rb == null) 
+            return;
         Vector2 newPosition = rb.position + movement * (moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(newPosition);
     }

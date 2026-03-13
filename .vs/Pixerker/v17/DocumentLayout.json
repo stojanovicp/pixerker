@@ -3,11 +3,67 @@
   "WorkspaceRootPath": "D:\\Unity Projects\\Pixerker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|d:\\unity projects\\pixerker\\assets\\scripts\\inventory\\activeinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|d:\\unity projects\\pixerker\\assets\\scripts\\inventory\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\player\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\scene management\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scene management\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\player\\selfdestroy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\selfdestroy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\inventory\\sword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\sword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\inventory\\bow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\bow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\scene management\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scene management\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\inventory\\activeinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\activeinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|d:\\unity projects\\pixerker\\assets\\scripts\\scene management\\areaexit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\inventory\\activeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\activeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\misc\\transparentdetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\misc\\transparentdetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\inventory\\weaponinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\weaponinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\inventory\\inventoryslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\inventoryslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\inventory\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\inventory\\iweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\iweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\scene management\\areaexit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scene management\\areaexit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -17,18 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\scene management\\uifade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scene management\\uifade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\scene management\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scene management\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\scene management\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scene management\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\scene management\\scenemanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,16 +87,8 @@
       "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\misc\\parallax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\misc\\transparentdetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\misc\\transparentdetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\enemies\\enemyhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\enemyhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\player\\sword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\sword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\misc\\knockback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -67,10 +103,6 @@
       "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\damagesource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\player\\selfdestroy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\selfdestroy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\enemies\\enemypathfinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\enemypathfinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -81,10 +113,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\player\\player controls.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\player controls.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|D:\\Unity Projects\\Pixerker\\assets\\scripts\\player\\activeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA7425AA-76E8-1219-27A2-E60F6EF7858F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\activeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\SlashAnim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -103,43 +131,69 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Projectile.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\Projectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\Projectile.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\Projectile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\Projectile.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T06:18:34.295Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerHealth.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\PlayerHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerHealth.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\PlayerHealth.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerHealth.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwCQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T05:38:36.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ActiveInventory.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\ActiveInventory.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\ActiveInventory.cs",
               "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\ActiveInventory.cs",
               "RelativeToolTip": "Assets\\Scripts\\Inventory\\ActiveInventory.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAzwBcAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T03:41:03.196Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T04:12:46.122Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UIFade.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\UIFade.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Scene Management\\UIFade.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\UIFade.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Scene Management\\UIFade.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAnAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "ActiveWeapon.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\ActiveWeapon.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\ActiveWeapon.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\ActiveWeapon.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\ActiveWeapon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T03:08:49.716Z"
+              "WhenOpened": "2026-03-13T04:11:41.794Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "CameraController.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\CameraController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Scene Management\\CameraController.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\CameraController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Scene Management\\CameraController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Title": "Sword.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\Sword.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\Sword.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\Sword.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\Sword.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAuwCAAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T02:22:33.334Z"
+              "WhenOpened": "2026-03-13T04:09:52.797Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 16,
               "Title": "AreaEntrance.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\AreaEntrance.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Scene Management\\AreaEntrance.cs",
@@ -151,7 +205,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 18,
               "Title": "SceneManagement.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\SceneManagement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Scene Management\\SceneManagement.cs",
@@ -163,64 +217,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Flash.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Flash.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Misc\\Flash.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Flash.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Misc\\Flash.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T15:10:57.712Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AreaExit.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\AreaExit.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Scene Management\\AreaExit.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\AreaExit.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Scene Management\\AreaExit.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T01:44:43.696Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerController.cs",
               "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\PlayerController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAASwDoAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAIwGQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-12T13:13:13.338Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Singleton.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\Singleton.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Scene Management\\Singleton.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\Singleton.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Scene Management\\Singleton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
+              "Title": "Bow.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\Bow.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\Bow.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\Bow.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\Bow.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T01:52:00.792Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Parallax.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Parallax.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Misc\\Parallax.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Parallax.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Misc\\Parallax.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T01:03:47.113Z"
+              "WhenOpened": "2026-03-13T04:26:22.939Z"
             },
             {
               "$type": "Document",
@@ -230,25 +247,13 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Misc\\TransparentDetection.cs",
               "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\TransparentDetection.cs",
               "RelativeToolTip": "Assets\\Scripts\\Misc\\TransparentDetection.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAYwCEAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwCoAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-13T00:44:56.193Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "EnemyAI.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyAI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\EnemyAI.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyAI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\EnemyAI.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAgwCUAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T22:53:58.291Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 4,
               "Title": "SelfDestroy.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\SelfDestroy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\SelfDestroy.cs",
@@ -260,55 +265,115 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Knockback.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Knockback.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Misc\\Knockback.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Knockback.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Misc\\Knockback.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAARAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "CameraController.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\CameraController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Scene Management\\CameraController.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\CameraController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Scene Management\\CameraController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T13:31:56.134Z"
+              "WhenOpened": "2026-03-13T02:22:33.334Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "EnemyHealth.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyHealth.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\EnemyHealth.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyHealth.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\EnemyHealth.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAnAAAAAAAAAA==",
+              "Title": "WeaponInfo.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\WeaponInfo.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\WeaponInfo.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\WeaponInfo.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\WeaponInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T13:14:58.435Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "EnemyPathfinding.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyPathfinding.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\EnemyPathfinding.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyPathfinding.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\EnemyPathfinding.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T13:14:34.561Z"
+              "WhenOpened": "2026-03-13T04:29:53.044Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "Sword.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\Sword.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Sword.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\Sword.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\Sword.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAwwAkAAAA3AAAAAAAAAA==",
+              "Title": "InventorySlot.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\InventorySlot.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\InventorySlot.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\InventorySlot.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\InventorySlot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T13:13:15.755Z"
+              "WhenOpened": "2026-03-13T04:43:24.636Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 7,
+              "Title": "Singleton.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\Singleton.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Scene Management\\Singleton.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\Singleton.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Scene Management\\Singleton.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T01:52:00.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UIFade.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\UIFade.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Scene Management\\UIFade.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\UIFade.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Scene Management\\UIFade.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T03:08:49.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IWeapon.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\IWeapon.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\IWeapon.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\IWeapon.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\IWeapon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T04:07:43.272Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Staff.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\Staff.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\Staff.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Inventory\\Staff.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\Staff.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T04:26:32.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Flash.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Flash.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Misc\\Flash.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Flash.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Misc\\Flash.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T15:10:57.712Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AreaExit.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\AreaExit.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Scene Management\\AreaExit.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Scene Management\\AreaExit.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Scene Management\\AreaExit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T01:44:43.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
               "Title": "SlashAnim.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\SlashAnim.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\SlashAnim.cs",
@@ -320,7 +385,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 20,
+              "Title": "Parallax.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Parallax.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Misc\\Parallax.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Parallax.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Misc\\Parallax.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T01:03:47.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\EnemyAI.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemies\\EnemyAI.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAgwCUAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T22:53:58.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Knockback.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Knockback.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Misc\\Knockback.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Knockback.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Misc\\Knockback.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T13:31:56.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "EnemyHealth.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\EnemyHealth.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyHealth.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemies\\EnemyHealth.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T13:14:58.435Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "EnemyPathfinding.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyPathfinding.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\EnemyPathfinding.cs",
+              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Enemies\\EnemyPathfinding.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemies\\EnemyPathfinding.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T13:14:34.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
               "Title": "Destructible.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Misc\\Destructible.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Misc\\Destructible.cs",
@@ -332,7 +457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 27,
               "Title": "Player Controls.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\Player Controls.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Player Controls.cs",
@@ -344,7 +469,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 24,
               "Title": "DamageSource.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\DamageSource.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\DamageSource.cs",
@@ -353,18 +478,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-12T13:13:10.915Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ActiveWeapon.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\ActiveWeapon.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\ActiveWeapon.cs",
-              "ToolTip": "D:\\Unity Projects\\Pixerker\\Assets\\Scripts\\Player\\ActiveWeapon.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\ActiveWeapon.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T13:13:08.411Z"
             }
           ]
         }

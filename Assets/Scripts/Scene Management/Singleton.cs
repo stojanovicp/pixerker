@@ -7,11 +7,17 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 
     protected virtual void Awake()
     {
-        if (instance != null && this.gameObject != null)
+        // if an instance already exists and it's not this, destroy this duplicate
+        if (instance != null && instance != this)
+        {
             Destroy(gameObject);
-        else
-            instance = (T)this;
+            return;
+        }
 
-        DontDestroyOnLoad(gameObject);
+        instance = (T)this;
+
+        // Ensure DontDestroyOnLoad is applied to the root GameObject (required by Unity)
+        var root = gameObject.transform.root != null ? gameObject.transform.root.gameObject : gameObject;
+        DontDestroyOnLoad(root);
     }
 }

@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: d65ce1cccf8911e4e83f6fe85ef0aba2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - myTrailRenderer: {instanceID: 0}
+  - weaponCollider: {instanceID: 0}
+  - slashAnimSpawnPoint: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

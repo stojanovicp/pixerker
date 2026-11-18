@@ -6,7 +6,7 @@ public class CameraController : Singleton<CameraController>
     private CinemachineCamera cinemachineCamera;
     public void SetPlayerCameraFollow()
     {
-        cinemachineCamera = FindFirstObjectByType<CinemachineCamera>();
+        cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
         if (cinemachineCamera != null)
         {
             cinemachineCamera.Target.TrackingTarget = PlayerController.Instance.transform;

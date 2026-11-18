@@ -40,7 +40,7 @@ public class AreaEntrance : MonoBehaviour
             }
 
             // Try direct vcam fallback
-            var vcam = FindFirstObjectByType<CinemachineCamera>();
+            var vcam = FindAnyObjectByType<CinemachineCamera>();
             if (vcam != null && PlayerController.Instance != null)
             {
                 vcam.Follow = PlayerController.Instance.transform;

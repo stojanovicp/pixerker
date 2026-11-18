@@ -4,49 +4,22 @@ public class EnemyPathfinding : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2f;
 
-    private Vector2 moveDir;
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
+    private Vector2 moveDir;
     private Knockback knockback;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+    private void Awake() {
         knockback = GetComponent<Knockback>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
-    {
-        if (knockback.GettingKnockback)
-            return;
+    private void FixedUpdate() {
+        if (knockback.GettingKnockedBack) { return; }
 
-        Flip();
-        Move();
+        rb.MovePosition(rb.position + moveDir * (moveSpeed * Time.fixedDeltaTime));
     }
 
-    private void Move()
-    {
-        Vector2 newPosition = rb.position + moveDir * (moveSpeed * Time.fixedDeltaTime);
-        rb.MovePosition(newPosition);
-    }
-
-    private void Flip()
-    {
-        var mousePosition = Input.mousePosition;
-        var playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        if (mousePosition.x < playerScreenPosition.x)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-        }
-    }
-
-    public void MoveTo(Vector2 targetPosition)
-    {
+    public void MoveTo(Vector2 targetPosition) {
         moveDir = targetPosition;
     }
 }

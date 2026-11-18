@@ -20,18 +20,18 @@ public class Sword : MonoBehaviour, IWeapon
     private void Start()
     {
         // safe-get weapon collider from PlayerController
-        if (PlayerController.Instance != null)
-            weaponCollider = PlayerController.Instance.GetWeaponCollider();
-        else
-            Debug.LogWarning("PlayerController.Instance is null in Sword.Start.");
+        // if (PlayerController.Instance != null)
+        //     weaponCollider = PlayerController.Instance.GetWeaponCollider();
+        // else
+        //     Debug.LogWarning("PlayerController.Instance is null in Sword.Start.");
 
              // Prefer inspector value, then ask PlayerController, then fallback-create
         if (slashAnimSpawnPoint == null)
         {
-            if (PlayerController.Instance != null)
-            {
-                slashAnimSpawnPoint = PlayerController.Instance.GetSlashAnimSpawnPoint();
-            }
+            // if (PlayerController.Instance != null)
+            // {
+            //     slashAnimSpawnPoint = PlayerController.Instance.GetSlashAnimSpawnPoint();
+            // }
 
             if (slashAnimSpawnPoint == null)
             {

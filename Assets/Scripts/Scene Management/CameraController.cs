@@ -4,17 +4,10 @@ using Unity.Cinemachine;
 public class CameraController : Singleton<CameraController>
 {
     private CinemachineCamera cinemachineCamera;
-    public void SetPlayerCameraFollow()
-    {
+
+    public void SetPlayerCameraFollow() {
         cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
-        if (cinemachineCamera != null)
-        {
-            cinemachineCamera.Target.TrackingTarget = PlayerController.Instance.transform;
-        }
-        else
-        {
-            Debug.LogWarning("Unable to find Cinemachine Camera");
-        }
+        cinemachineCamera.Follow = PlayerController.Instance.transform;
     }
 }
 

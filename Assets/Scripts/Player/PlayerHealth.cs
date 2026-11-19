@@ -4,7 +4,8 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 10;
-    [SerializeField] private float knockbackForce = 5f;
+    [SerializeField] private float knockbackForce = 10f;
+    [SerializeField] private float damageRecoveryTime = 0.5f;
 
     private int currentHealth;
     private bool canTakeDamage = true;
@@ -27,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
     {
         EnemyAI enemy = collision.gameObject.GetComponent<EnemyAI>();
 
-        if(enemy)
+        if(enemy && canTakeDamage)
         {
             TakeDamage(1, collision.transform);
         }
@@ -35,20 +36,18 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage, Transform hitTransform)
     {
-        if(!canTakeDamage) return;
-
-        knockback.GetKnockedBack(hitTransform, knockbackForce);
-        StartCoroutine(flash.FlashRoutine());
         canTakeDamage = false;
         currentHealth -= damage;
 
-        Debug.Log("Player took damage. Current health: " + currentHealth);
+        knockback.GetKnockedBack(hitTransform, knockbackForce);
+        StartCoroutine(flash.FlashRoutine());
+
         StartCoroutine(DamageRecoveryRoutine());
     }
 
     private IEnumerator DamageRecoveryRoutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(damageRecoveryTime);
         canTakeDamage = true;
     }
 }

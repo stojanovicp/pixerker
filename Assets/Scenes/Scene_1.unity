@@ -3432,7 +3432,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 3
       minMaxState: 0
-      scalar: 75
+      scalar: 100
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -36771,6 +36771,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 872685357667449319, guid: a78112f7678542645a67d6790ed15387, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 872685357667449319, guid: a78112f7678542645a67d6790ed15387, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.38
+      objectReference: {fileID: 0}
     - target: {fileID: 1456794638039770476, guid: a78112f7678542645a67d6790ed15387, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.15
@@ -36890,7 +36898,7 @@ PrefabInstance:
       objectReference: {fileID: 1994381151}
     - target: {fileID: 5246226957247441048, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.9895425
+      value: -10.563484
       objectReference: {fileID: 0}
     - target: {fileID: 5246226957247441048, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
       propertyPath: m_LocalPosition.y
@@ -36977,26 +36985,6 @@ PrefabInstance:
     - target: {fileID: 2356353412623518327, guid: f457f3be07803204181bf4837dc272a1, type: 3}
       propertyPath: m_Name
       value: AreaExit
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403414699194231410, guid: f457f3be07803204181bf4837dc272a1, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403414699194231410, guid: f457f3be07803204181bf4837dc272a1, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403414699194231410, guid: f457f3be07803204181bf4837dc272a1, type: 3}
-      propertyPath: InitialModule.startSize.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403414699194231410, guid: f457f3be07803204181bf4837dc272a1, type: 3}
-      propertyPath: InitialModule.startSizeY.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403414699194231410, guid: f457f3be07803204181bf4837dc272a1, type: 3}
-      propertyPath: InitialModule.startSizeZ.minMaxState
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5581533840922949069, guid: f457f3be07803204181bf4837dc272a1, type: 3}
       propertyPath: m_LocalPosition.x

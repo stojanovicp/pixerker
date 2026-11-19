@@ -35,11 +35,13 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     public void NewWeapon(MonoBehaviour newWeapon)
     {
         CurrentActiveWeapon = newWeapon;
+        isAttacking = false;
     }
 
     public void WeaponNull()
     {
         CurrentActiveWeapon = null;
+        isAttacking = false;
     }
 
     public void ToggleIsAttacking(bool value) {

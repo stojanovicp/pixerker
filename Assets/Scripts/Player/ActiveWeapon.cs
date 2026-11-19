@@ -24,6 +24,11 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         playerControls.Enable();
     }
 
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
+
     private void Start()
     {
         playerControls.Combat.Attack.started += _ => StartAttacking();
@@ -39,8 +44,8 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     public void NewWeapon(MonoBehaviour newWeapon)
     {
         CurrentActiveWeapon = newWeapon;
-        AttackCooldown();
         timeBetweenAttacks = (CurrentActiveWeapon as IWeapon).GetWeaponInfo().weaponCooldown;
+        AttackCooldown();
     }
 
     public void WeaponNull()

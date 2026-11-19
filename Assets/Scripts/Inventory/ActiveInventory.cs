@@ -20,6 +20,10 @@ public class ActiveInventory : MonoBehaviour
         playerControls.Enable();
     }
 
+    private void OnDisable() {
+        playerControls.Disable();
+    }
+
     private void ToggleActiveSlot(int numValue) {
         ToggleActiveHighlight(numValue - 1);
     }
@@ -49,15 +53,15 @@ public class ActiveInventory : MonoBehaviour
         Transform childTransform = transform.GetChild(activeSlotIndexNum);
         InventorySlot inventorySlot = childTransform.GetComponentInChildren<InventorySlot>();
         WeaponInfo weaponInfo = inventorySlot.GetWeaponInfo();
-        GameObject weaponToSpawn = weaponInfo.weaponPrefab;
-
 
         if(weaponInfo == null)
         {
             ActiveWeapon.Instance.WeaponNull();
             return;
         }
-        
+
+        GameObject weaponToSpawn = weaponInfo.weaponPrefab;
+
 
 
         GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity);

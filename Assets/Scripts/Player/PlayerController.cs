@@ -42,6 +42,10 @@ public class PlayerController : Singleton<PlayerController>
         playerControls.Enable();
     }
 
+    private void OnDisable() {
+        playerControls.Disable();
+    }
+
     private void Update() {
         PlayerInput();
     }

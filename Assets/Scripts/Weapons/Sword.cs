@@ -42,6 +42,10 @@ public class Sword : MonoBehaviour, IWeapon
         weaponCollider.gameObject.SetActive(false);
     }
 
+    private void OnDestroy() {
+        if (weaponCollider) { weaponCollider.gameObject.SetActive(false); }
+    }
+
     public void SwingUpFlipAnimEvent() {
         slashAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
 

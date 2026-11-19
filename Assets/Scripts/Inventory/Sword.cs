@@ -5,146 +5,75 @@ using System.Collections;
 public class Sword : MonoBehaviour, IWeapon
 {
     [SerializeField] private GameObject slashAnimPrefab;
-    [SerializeField] private Transform slashAnimSpawnPoint;    
-    [SerializeField] private float swordAttackCD = 0.35f;
-        
-    private Animator animator;
-    private Transform weaponCollider;
+    [SerializeField] private Transform slashAnimSpawnPoint;
+    [SerializeField] private Transform weaponCollider;
+    [SerializeField] private float swordAttackCD = .5f;
+
+    private Animator myAnimator;
+    private PlayerController playerController;
+    private ActiveWeapon activeWeapon;
+
     private GameObject slashAnim;
 
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
+    private void Awake() {
+        playerController = GetComponentInParent<PlayerController>();
+        activeWeapon = GetComponentInParent<ActiveWeapon>();
+        myAnimator = GetComponent<Animator>();
     }
 
-    private void Start()
-    {
-        // safe-get weapon collider from PlayerController
-        // if (PlayerController.Instance != null)
-        //     weaponCollider = PlayerController.Instance.GetWeaponCollider();
-        // else
-        //     Debug.LogWarning("PlayerController.Instance is null in Sword.Start.");
+    
 
-             // Prefer inspector value, then ask PlayerController, then fallback-create
-        if (slashAnimSpawnPoint == null)
-        {
-            // if (PlayerController.Instance != null)
-            // {
-            //     slashAnimSpawnPoint = PlayerController.Instance.GetSlashAnimSpawnPoint();
-            // }
-
-            if (slashAnimSpawnPoint == null)
-            {
-                var found = GameObject.Find("slashAnimSpawnPoint");
-                if (found != null)
-                {
-                    slashAnimSpawnPoint = found.transform;
-                }
-                else
-                {
-                    Debug.LogWarning("slashAnimSpawnPoint not assigned and not found. Creating fallback spawn point.");
-                    var go = new GameObject("slashAnimSpawnPoint_AUTO");
-                    if (transform.parent != null)
-                        go.transform.SetParent(transform.parent, false);
-                    else
-                        go.transform.SetParent(transform, false);
-                    go.transform.localPosition = Vector3.zero;
-                    slashAnimSpawnPoint = go.transform;
-                }
-            }
-        }
-    }
-
-    private void Update()
-    {
+    private void Update() {
         MouseFollowWithOffset();
     }
 
-    public void Attack()
-    {
-        if (animator != null)
-            animator.SetTrigger("Attack");
-
-        if (weaponCollider != null && weaponCollider.gameObject != null)
-            weaponCollider.gameObject.SetActive(true);
-        else
-            Debug.LogWarning("weaponCollider is null when starting Attack.");
-
-        if (slashAnimPrefab != null && slashAnimSpawnPoint != null)
-        {
-            slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
-            slashAnim.transform.parent = this.transform.parent;
-        }
-        else
-        {
-            Debug.LogWarning("slashAnimPrefab or slashAnimSpawnPoint is not assigned; skipping slash animation spawn.");
-            slashAnim = null;
-        }
-
+    public void Attack() {
+        // isAttacking = true;
+        myAnimator.SetTrigger("Attack");
+        weaponCollider.gameObject.SetActive(true);
+        slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
+        slashAnim.transform.parent = this.transform.parent;
         StartCoroutine(AttackCDRoutine());
     }
 
-    private void DoneAttackingAnimEvent()
-    {
-        if (weaponCollider != null && weaponCollider.gameObject != null)
-            weaponCollider.gameObject.SetActive(false);
-    }
-
-    public void SwingUpFlipAnimEvent()
-    {
-        if (slashAnim == null)
-            return;
-
-        slashAnim.transform.rotation = Quaternion.Euler(-180, 0, 0);
-
-        if (PlayerController.Instance != null && PlayerController.Instance.FacingLeft)
-        {
-            var sr = slashAnim.GetComponent<SpriteRenderer>();
-            if (sr != null) sr.flipX = true;
-        }
-    }
-
-    private IEnumerator AttackCDRoutine()
-    {
+    private IEnumerator AttackCDRoutine() {
         yield return new WaitForSeconds(swordAttackCD);
         ActiveWeapon.Instance.ToggleIsAttacking(false);
     }
 
-    public void SwingDownFlipAnimEvent()
-    {
-        if (slashAnim == null)
-            return;
+    public void DoneAttackingAnimEvent() {
+        weaponCollider.gameObject.SetActive(false);
+    }
 
-        slashAnim.transform.rotation = Quaternion.Euler(0, 0, 0);
-        if (PlayerController.Instance != null && PlayerController.Instance.FacingLeft)
-        {
-            var sr = slashAnim.GetComponent<SpriteRenderer>();
-            if (sr != null) sr.flipX = true;
+    public void SwingUpFlipAnimEvent() {
+        slashAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
+
+        if (playerController.FacingLeft) { 
+            slashAnim.GetComponent<SpriteRenderer>().flipX = true;
         }
     }
 
-    private void MouseFollowWithOffset()
-    {
-        if (Camera.main == null || PlayerController.Instance == null || ActiveWeapon.Instance == null)
-            return;
+    public void SwingDownFlipAnimEvent() {
+        slashAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(PlayerController.Instance.transform.position);
-
-        float angle = Mathf.Atan2(Mathf.Abs(mousePosition.y - playerScreenPoint.y), Mathf.Abs(mousePosition.x - playerScreenPoint.x)) * Mathf.Rad2Deg;
-
-        if (ActiveWeapon.Instance.transform == null)
-            return;
-
-        if (mousePosition.x < playerScreenPoint.x)
+        if (playerController.FacingLeft)
         {
-            ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, -180, angle);
-            if (weaponCollider != null) weaponCollider.transform.rotation = Quaternion.Euler(0, -180, 0);
+            slashAnim.GetComponent<SpriteRenderer>().flipX = true;
         }
-        else
-        {
-            ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, angle);
-            if (weaponCollider != null) weaponCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    private void MouseFollowWithOffset() {
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(playerController.transform.position);
+
+        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+
+        if (mousePos.x < playerScreenPoint.x) {
+            activeWeapon.transform.rotation = Quaternion.Euler(0, -180, angle);
+            weaponCollider.transform.rotation = Quaternion.Euler(0, -180, 0);
+        } else {
+            activeWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
+            weaponCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }

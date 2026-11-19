@@ -1117,6 +1117,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -1174,8 +1175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89fb1d649b333734c953c96195a41b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 1
   fadeScreen: {fileID: 8005327504158730941}
+  fadeSpeed: 1
 --- !u!1 &7393184344493061342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.11856881, g: 0.119433165, b: 0.14716971, a: 0}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

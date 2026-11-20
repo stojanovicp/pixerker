@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
     {
         EnemyAI enemy = collision.gameObject.GetComponent<EnemyAI>();
 
-        if(enemy && canTakeDamage)
+        if(enemy)
         {
             TakeDamage(1, collision.transform);
         }
@@ -36,6 +36,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage, Transform hitTransform)
     {
+        if(!canTakeDamage) { return; }
+
         canTakeDamage = false;
         currentHealth -= damage;
 

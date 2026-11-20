@@ -4,8 +4,9 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 22f;
     [SerializeField] private GameObject particleOnHitPrefabVFX;
-
-    private WeaponInfo weaponInfo;
+    [SerializeField] private bool isEnemyProjectile = false;
+    [SerializeField] private float projectileRange = 10f;
+    
     private Vector3 startPosition;
 
     private void Start()
@@ -19,14 +20,14 @@ public class Projectile : MonoBehaviour
         DetectFireDistance();
     }
 
-    public void UpdateWeaponInfo(WeaponInfo weaponInfo)
+    public void UpdateProjectileRange(float projectileRange)
     {
-        this.weaponInfo = weaponInfo;
+        this.projectileRange = projectileRange;
     }
 
     private void DetectFireDistance()
     {
-        if(Vector3.Distance(transform.position, startPosition) > weaponInfo.weaponRange)
+        if(Vector3.Distance(transform.position, startPosition) > projectileRange)
         {
             Destroy(gameObject);
         }
@@ -41,9 +42,17 @@ public class Projectile : MonoBehaviour
     {
         EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
         Indestructible indestructible = other.gameObject.GetComponent<Indestructible>();
+        PlayerHealth player = other.gameObject.GetComponent<PlayerHealth>();
 
-        if(!other.isTrigger && (enemyHealth || indestructible))
+        bool hitTarget = isEnemyProjectile ? player != null : enemyHealth != null;
+
+        if(!other.isTrigger && (hitTarget || indestructible))
         {
+            if(player && isEnemyProjectile)
+            {
+                player.TakeDamage(1, transform);
+            }
+
             Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
             Destroy(gameObject);
         }

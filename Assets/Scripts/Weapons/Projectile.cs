@@ -55,7 +55,7 @@ public class Projectile : MonoBehaviour
         {
             if((player && isEnemyProjectile) || (enemyHealth && !isEnemyProjectile))
             {
-                player?.TakeDamage(1, transform);
+                if (player) player.TakeDamage(1, transform);
                 Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
                 Destroy(gameObject);
             }

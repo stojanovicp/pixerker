@@ -35520,6 +35520,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230323672562339232, guid: b25822e8b9cb2d84a9ec715d19e967af, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 40.94287
+      objectReference: {fileID: 0}
     - target: {fileID: 5903048375548910690, guid: b25822e8b9cb2d84a9ec715d19e967af, type: 3}
       propertyPath: m_Name
       value: UI_Canvas
@@ -35872,7 +35876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5246226957247441048, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.036185
+      value: -10.013946
       objectReference: {fileID: 0}
     - target: {fileID: 8559447249528320993, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
       propertyPath: m_Name

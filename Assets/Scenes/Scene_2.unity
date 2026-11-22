@@ -10072,17 +10072,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5953861121987102333, guid: f457f3be07803204181bf4837dc272a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.33
+      objectReference: {fileID: 0}
     - target: {fileID: 6193360367811659253, guid: f457f3be07803204181bf4837dc272a1, type: 3}
       propertyPath: transitionName
       value: East_Entrance
       objectReference: {fileID: 0}
     - target: {fileID: 6752498978159961148, guid: f457f3be07803204181bf4837dc272a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.97
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: 6752498978159961148, guid: f457f3be07803204181bf4837dc272a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 6930336296992148850, guid: f457f3be07803204181bf4837dc272a1, type: 3}
       propertyPath: m_Flip.x
@@ -27533,6 +27537,10 @@ PrefabInstance:
     - target: {fileID: 1711504129897687764, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246226957247441048, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.036185
       objectReference: {fileID: 0}
     - target: {fileID: 7345621425327602676, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
       propertyPath: AnimatedTarget

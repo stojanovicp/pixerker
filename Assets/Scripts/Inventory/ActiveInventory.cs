@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,6 +50,24 @@ public class ActiveInventory : Singleton<ActiveInventory>
         }
 
         ActiveWeapon.Instance.WeaponNull();
+    }
+
+    // Empties every slot whose weapon can be dropped and returns those weapons (everything except the Sword).
+    public List<WeaponInfo> TakeDroppableWeapons()
+    {
+        List<WeaponInfo> takenWeapons = new List<WeaponInfo>();
+
+        foreach (InventorySlot slot in slots)
+        {
+            WeaponInfo weaponInfo = slot.GetWeaponInfo();
+
+            if (weaponInfo == null || !weaponInfo.canBeDropped) { continue; }
+
+            takenWeapons.Add(weaponInfo);
+            slot.Clear();
+        }
+
+        return takenWeapons;
     }
 
     public bool HasWeapon(WeaponInfo weaponInfo)

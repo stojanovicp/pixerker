@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,7 +32,20 @@ public class PlayerRespawn : MonoBehaviour
     private void OnPlayerDied()
     {
         ActiveInventory.Instance.UnequipWeapon();
+        LeaveDeathPile();
         StartCoroutine(RespawnRoutine());
+    }
+
+    // The pile keeps every droppable weapon and half the gold (rounded down); the other half is lost.
+    private void LeaveDeathPile()
+    {
+        List<WeaponInfo> weapons = ActiveInventory.Instance.TakeDroppableWeapons();
+        int pileGold = EconomyManager.Instance.TakeAllGold() / 2;
+
+        if (weapons.Count == 0 && pileGold == 0) { return; }
+
+        string sceneName = SceneManager.GetActiveScene().name;
+        WorldState.AddDeathPile(new DeathPileRecord(sceneName, transform.position, weapons, pileGold));
     }
 
     private IEnumerator RespawnRoutine()

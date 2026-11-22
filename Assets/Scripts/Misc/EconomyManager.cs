@@ -16,4 +16,12 @@ public class EconomyManager : Singleton<EconomyManager>
         currentGold += amount;
         GoldChanged?.Invoke(currentGold);
     }
+
+    public int TakeAllGold()
+    {
+        int takenGold = currentGold;
+        currentGold = 0;
+        GoldChanged?.Invoke(currentGold);
+        return takenGold;
+    }
 }

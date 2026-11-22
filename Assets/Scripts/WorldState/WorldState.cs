@@ -6,15 +6,18 @@ using UnityEngine;
 public static class WorldState
 {
     public static event Action<DroppedWeaponRecord> DroppedWeaponAdded;
+    public static event Action<DeathPileRecord> DeathPileAdded;
 
     private static readonly Dictionary<string, HashSet<string>> removedObjectIds = new Dictionary<string, HashSet<string>>();
     private static readonly Dictionary<string, List<DroppedWeaponRecord>> droppedWeapons = new Dictionary<string, List<DroppedWeaponRecord>>();
+    private static readonly Dictionary<string, List<DeathPileRecord>> deathPiles = new Dictionary<string, List<DeathPileRecord>>();
 
     // Also covers Play Mode without domain reload, where static fields would otherwise survive.
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void ResetOnPlay()
     {
         DroppedWeaponAdded = null;
+        DeathPileAdded = null;
         Reset();
     }
 
@@ -22,6 +25,7 @@ public static class WorldState
     {
         removedObjectIds.Clear();
         droppedWeapons.Clear();
+        deathPiles.Clear();
     }
 
     public static bool IsRemoved(string sceneName, string objectId)
@@ -50,6 +54,27 @@ public static class WorldState
     public static void RemoveDroppedWeapon(DroppedWeaponRecord record)
     {
         if (droppedWeapons.TryGetValue(record.SceneName, out List<DroppedWeaponRecord> records))
+        {
+            records.Remove(record);
+        }
+    }
+
+    public static IReadOnlyList<DeathPileRecord> GetDeathPiles(string sceneName)
+    {
+        return deathPiles.TryGetValue(sceneName, out List<DeathPileRecord> records)
+            ? records
+            : Array.Empty<DeathPileRecord>();
+    }
+
+    public static void AddDeathPile(DeathPileRecord record)
+    {
+        GetOrCreate(deathPiles, record.SceneName).Add(record);
+        DeathPileAdded?.Invoke(record);
+    }
+
+    public static void RemoveDeathPile(DeathPileRecord record)
+    {
+        if (deathPiles.TryGetValue(record.SceneName, out List<DeathPileRecord> records))
         {
             records.Remove(record);
         }

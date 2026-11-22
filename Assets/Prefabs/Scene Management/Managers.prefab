@@ -292,3 +292,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorldObjectSpawner
   weaponPickupPrefab: {fileID: 2591288908880164870, guid: 2396a116c6a7d674cbcd50b213ddbfa4, type: 3}
+  deathPilePrefab: {fileID: 8401637962032414446, guid: 388a434b418e2164192fbcbbda1cfa90, type: 3}

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6543106635053934579}
   - component: {fileID: 4833482284134813936}
   - component: {fileID: 466936992894745764}
+  - component: {fileID: 6267826929569153811}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -256,9 +257,24 @@ MonoBehaviour:
   angleSpread: 82
   startingDistance: 0.3
   timeBetweenBursts: 0.5
-  restTime: 0
+  restTime: 0.1
   stagger: 1
   oscilate: 1
+--- !u!114 &6267826929569153811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394896299141930381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7683869679dc54d42a3c7cf709b8b1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupSpawner
+  goldCoin: {fileID: 1713687019385581802, guid: db552984bb7585a42856aa74b12a7a81, type: 3}
+  healthGlobe: {fileID: 1713687019385581802, guid: 93ee405b1d3de6545805b6d5d2a3e652, type: 3}
+  staminaGlobe: {fileID: 1713687019385581802, guid: 6f5056d2f7c59054f8e242c407afa084, type: 3}
 --- !u!1 &8773032821182654890
 GameObject:
   m_ObjectHideFlags: 0

@@ -270,7 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570b38aa7d927e64cbe6d308034cd4f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 1
 --- !u!1 &3547544519978818206
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +468,7 @@ GameObject:
   - component: {fileID: 8705214293992600051}
   - component: {fileID: 4718806991243099449}
   - component: {fileID: 1004438992423983317}
+  - component: {fileID: 4907085822462263761}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -671,6 +671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   knockbackForce: 5
+  damageRecoveryTime: 0.5
 --- !u!114 &4718806991243099449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,3 +699,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteFlashMat: {fileID: 2100000, guid: c362974ef68aa034eb5500b8d2f402e9, type: 2}
   restoreDefaultMatTime: 0.2
+--- !u!114 &4907085822462263761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677999073789709207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdaa608740a00c48b2e2dbd73298355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Stamina
+  fullStaminaImage: {fileID: 21300000, guid: 145615aa5a4f1454a87ec125fc3de394, type: 3}
+  emptyStaminaImage: {fileID: 21300000, guid: 442188a7c54fcfd4290fb6135b0f16b4, type: 3}
+  timeBetweenRefresh: 3

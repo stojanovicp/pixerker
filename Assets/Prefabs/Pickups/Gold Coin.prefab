@@ -181,7 +181,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &-1469857025866411315
 MonoBehaviour:
@@ -195,8 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cabdc7e4a9f5d942a4aa0ba7b96c5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pickup
+  pickUpType: 0
   pickUpDistance: 4
-  accelartionRate: 0.7
+  accelartionRate: 1
   moveSpeed: 4
   animationCurve:
     serializedVersion: 2

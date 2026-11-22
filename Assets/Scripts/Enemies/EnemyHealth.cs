@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int startingHealth = 3;
+    [SerializeField] private EnemyStats stats;
     [SerializeField] private GameObject deathVFXPrefab;
 
     private int currentHealth;
@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     }
 
     private void Start() {
-        currentHealth = startingHealth;
+        currentHealth = stats.maxHealth;
     }
 
     public void TakeDamage(DamageInfo damage) {

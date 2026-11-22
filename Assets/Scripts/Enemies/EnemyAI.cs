@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private float roamChangeDirFloat = 2f;
-    [SerializeField] private float attackRange = 0f;
+    [SerializeField] private EnemyStats stats;
     [SerializeField] private MonoBehaviour enemyType;
-    [SerializeField] private float attackCooldown = 2f;
-    [SerializeField] private bool stopMovingWhileAttacking = false;
+
+    public int ContactDamage => stats.contactDamage;
 
     private enum State {
         Roaming,
@@ -59,12 +58,12 @@ public class EnemyAI : MonoBehaviour
 
         enemyPathfinding.MoveTo(roamPosition);
 
-        if(Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange)
+        if(Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < stats.attackRange)
         {
             state = State.Attacking;
         }
 
-        if(timeRoaming > roamChangeDirFloat)
+        if(timeRoaming > stats.roamDirectionChangeTime)
         {
             roamPosition = GetRoamingPosition();
         }
@@ -72,17 +71,17 @@ public class EnemyAI : MonoBehaviour
 
     private void Attacking()
     {
-        if(Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > attackRange)
+        if(Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > stats.attackRange)
         {
             state = State.Roaming;
         }
 
-        if(attackRange != 0 && canAttack)
+        if(stats.attackRange != 0 && canAttack)
         {
             canAttack = false;
             (enemyType as IEnemy).Attack();
 
-            if(stopMovingWhileAttacking == true)
+            if(stats.stopMovingWhileAttacking)
             {
                 enemyPathfinding.StopMoving();
             }
@@ -97,7 +96,7 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator AttackCooldownRoutine()
     {
-        yield return new WaitForSeconds(attackCooldown);
+        yield return new WaitForSeconds(stats.attackCooldown);
         canAttack = true;
     }
     

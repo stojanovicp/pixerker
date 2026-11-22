@@ -272,11 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefc682f409cdee46a8a6cc9a560b877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roamChangeDirFloat: 2
-  attackRange: 0
+  stats: {fileID: 11400000, guid: 526199c703e74262165b38a4004b9e6d, type: 2}
   enemyType: {fileID: 0}
-  attackCooldown: 2
-  stopMovingWhileAttacking: 0
 --- !u!114 &7675027894399682866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,9 +286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d003c31c414794780781ca03fed3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
+  stats: {fileID: 11400000, guid: 526199c703e74262165b38a4004b9e6d, type: 2}
   deathVFXPrefab: {fileID: 4572668514380936244, guid: 5160a619669bd8f428ce50a67293bf66, type: 3}
-  knockBackThrust: 10
 --- !u!114 &1028691774309079412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb2b4af6a250f847976ced75021c6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  stats: {fileID: 11400000, guid: 526199c703e74262165b38a4004b9e6d, type: 2}
 --- !u!114 &44574769868944206
 MonoBehaviour:
   m_ObjectHideFlags: 0

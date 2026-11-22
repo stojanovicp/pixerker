@@ -41,7 +41,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
         if(enemy)
         {
-            TakeDamage(1, collision.transform);
+            TakeDamage(enemy.ContactDamage, collision.transform);
         }
     }
 

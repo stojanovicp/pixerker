@@ -30,8 +30,8 @@ public class EnemyPathfinding : MonoBehaviour
         }
     }
 
-    public void MoveTo(Vector2 targetPosition) {
-        moveDir = targetPosition;
+    public void MoveInDirection(Vector2 direction) {
+        moveDir = direction;
     }
 
     public void StopMoving()

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -6,104 +5,92 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private EnemyStats stats;
     [SerializeField] private MonoBehaviour enemyType;
 
+    public EnemyStats Stats => stats;
     public int ContactDamage => stats.contactDamage;
+    public bool CanAttack => attack != null && stats.attackRange > 0f;
+    public float DistanceToPlayer => Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
 
-    private enum State {
-        Roaming,
-        Attacking
-    }
+    public EnemyRoamState RoamState { get; private set; }
+    public EnemyChaseState ChaseState { get; private set; }
+    public EnemyAttackState AttackState { get; private set; }
 
-    private bool canAttack = true;
-    private Vector2 roamPosition;
-    private float timeRoaming = 0f;
-    private State state;
+    private readonly StateMachine stateMachine = new StateMachine();
     private EnemyPathfinding enemyPathfinding;
+    private IEnemy attack;
+    private float nextAttackTime;
 
-    private void Awake() {
+    private void Awake()
+    {
         enemyPathfinding = GetComponent<EnemyPathfinding>();
-        state = State.Roaming;
+        attack = enemyType as IEnemy;
+
+        if (stats.attackRange > 0f && attack == null)
+        {
+            Debug.LogError($"{nameof(EnemyAI)} on '{name}': Attack Range is above 0 but Enemy Type is not an {nameof(IEnemy)}. This enemy will not attack.", this);
+        }
+
+        RoamState = new EnemyRoamState(this);
+        ChaseState = new EnemyChaseState(this);
+        AttackState = new EnemyAttackState(this);
     }
 
-    private void Start() {
-        roamPosition = GetRoamingPosition();
+    private void Start()
+    {
+        stateMachine.ChangeState(RoamState);
     }
 
     private void Update()
     {
         if (PlayerController.Instance == null) { return; }
 
-        MovementStateControl();
+        stateMachine.Tick();
     }
 
-    private void MovementStateControl()
+    public void ChangeState(IState nextState)
     {
-        switch(state)
-        {
-            case State.Roaming:
-                Roaming();
-            break;
-
-            case State.Attacking:
-                Attacking();
-            break;
-
-            default:
-            break;
-        }
+        stateMachine.ChangeState(nextState);
     }
 
-    private void Roaming()
+    public void MoveInDirection(Vector2 direction)
     {
-        timeRoaming += Time.deltaTime;
-
-        enemyPathfinding.MoveTo(roamPosition);
-
-        if(Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < stats.attackRange)
-        {
-            state = State.Attacking;
-        }
-
-        if(timeRoaming > stats.roamDirectionChangeTime)
-        {
-            roamPosition = GetRoamingPosition();
-        }
+        enemyPathfinding.MoveInDirection(direction);
     }
 
-    private void Attacking()
+    public void MoveTowardPlayer()
     {
-        if(Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > stats.attackRange)
+        if (DistanceToPlayer <= stats.stoppingDistance)
         {
-            state = State.Roaming;
+            enemyPathfinding.StopMoving();
+            return;
         }
 
-        if(stats.attackRange != 0 && canAttack)
-        {
-            canAttack = false;
-            (enemyType as IEnemy).Attack();
-
-            if(stats.stopMovingWhileAttacking)
-            {
-                enemyPathfinding.StopMoving();
-            }
-            else
-            {
-                enemyPathfinding.MoveTo(roamPosition);
-            }
-
-            StartCoroutine(AttackCooldownRoutine());
-        }
+        Vector2 directionToPlayer = (PlayerController.Instance.transform.position - transform.position).normalized;
+        enemyPathfinding.MoveInDirection(directionToPlayer);
     }
 
-    private IEnumerator AttackCooldownRoutine()
+    public void TryAttack()
     {
-        yield return new WaitForSeconds(stats.attackCooldown);
-        canAttack = true;
-    }
-    
+        if (!CanAttack || Time.time < nextAttackTime) { return; }
 
-    private Vector2 GetRoamingPosition() {
-        timeRoaming = 0f;
-        return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        nextAttackTime = Time.time + stats.attackCooldown;
+        attack.Attack();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (stats == null) { return; }
+
+        DrawRange(stats.detectionRange, Color.yellow);
+        DrawRange(stats.loseRange, Color.gray);
+        DrawRange(stats.attackRange, Color.red);
+        DrawRange(stats.stoppingDistance, Color.cyan);
+    }
+
+    private void DrawRange(float radius, Color color)
+    {
+        if (radius <= 0f) { return; }
+
+        Gizmos.color = color;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
-

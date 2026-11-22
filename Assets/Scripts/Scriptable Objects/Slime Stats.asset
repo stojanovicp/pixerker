@@ -15,7 +15,9 @@ MonoBehaviour:
   maxHealth: 3
   moveSpeed: 1
   contactDamage: 1
+  detectionRange: 6
+  loseRange: 9
   attackRange: 0
+  stoppingDistance: 0
   attackCooldown: 2
   roamDirectionChangeTime: 2
-  stopMovingWhileAttacking: 0

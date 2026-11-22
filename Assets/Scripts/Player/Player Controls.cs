@@ -224,6 +224,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": true,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f0a3c1e-2b4d-4e8a-9c7f-1d2e3f4a5b6c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -281,6 +291,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Keyboard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -297,6 +318,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Keyboard = m_Inventory.FindAction("Keyboard", throwIfNotFound: true);
+        m_Inventory_Drop = m_Inventory.FindAction("Drop", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -583,6 +605,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Inventory;
     private List<IInventoryActions> m_InventoryActionsCallbackInterfaces = new List<IInventoryActions>();
     private readonly InputAction m_Inventory_Keyboard;
+    private readonly InputAction m_Inventory_Drop;
     /// <summary>
     /// Provides access to input actions defined in input action map "Inventory".
     /// </summary>
@@ -598,6 +621,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Inventory/Keyboard".
         /// </summary>
         public InputAction @Keyboard => m_Wrapper.m_Inventory_Keyboard;
+        /// <summary>
+        /// Provides access to the underlying input action "Inventory/Drop".
+        /// </summary>
+        public InputAction @Drop => m_Wrapper.m_Inventory_Drop;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -627,6 +654,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Keyboard.started += instance.OnKeyboard;
             @Keyboard.performed += instance.OnKeyboard;
             @Keyboard.canceled += instance.OnKeyboard;
+            @Drop.started += instance.OnDrop;
+            @Drop.performed += instance.OnDrop;
+            @Drop.canceled += instance.OnDrop;
         }
 
         /// <summary>
@@ -641,6 +671,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Keyboard.started -= instance.OnKeyboard;
             @Keyboard.performed -= instance.OnKeyboard;
             @Keyboard.canceled -= instance.OnKeyboard;
+            @Drop.started -= instance.OnDrop;
+            @Drop.performed -= instance.OnDrop;
+            @Drop.canceled -= instance.OnDrop;
         }
 
         /// <summary>
@@ -725,5 +758,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnKeyboard(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Drop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDrop(InputAction.CallbackContext context);
     }
 }

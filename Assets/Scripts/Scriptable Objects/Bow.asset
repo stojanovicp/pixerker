@@ -18,3 +18,5 @@ MonoBehaviour:
   weaponRange: 12
   knockbackForce: 7
   aimMode: 0
+  icon: {fileID: 21300000, guid: f4bf28f53ee7d694fab07ce9b975de09, type: 3}
+  canBeDropped: 1

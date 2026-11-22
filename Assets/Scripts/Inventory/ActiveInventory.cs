@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class ActiveInventory : Singleton<ActiveInventory>
 {
-    private int activeSlotIndexNum = 0;
+    [SerializeField] private InventorySlot[] slots;
+    [SerializeField] private WeaponPickup weaponPickupPrefab;
+    [SerializeField] private Vector2 dropOffset = new Vector2(0f, -0.3f);
 
+    private int activeSlotIndex = 0;
     private PlayerControls playerControls;
 
     protected override void Awake() {
@@ -11,18 +14,18 @@ public class ActiveInventory : Singleton<ActiveInventory>
 
         if (Instance != this) { return; }
 
+        if (slots == null || slots.Length == 0 || weaponPickupPrefab == null)
+        {
+            Debug.LogError($"{nameof(ActiveInventory)} on '{name}': assign Slots and Weapon Pickup Prefab.", this);
+        }
+
         playerControls = new PlayerControls();
     }
 
-    private void Start() 
+    private void Start()
     {
-        playerControls.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
-    }
-
-    public void EquipStartingWeapon()
-    {
-        ToggleActiveHighlight(0);
-
+        playerControls.Inventory.Keyboard.performed += ctx => SelectSlot((int)ctx.ReadValue<float>() - 1);
+        playerControls.Inventory.Drop.performed += _ => DropActiveWeapon();
     }
 
     private void OnEnable() {
@@ -33,50 +36,91 @@ public class ActiveInventory : Singleton<ActiveInventory>
         playerControls?.Disable();
     }
 
-    private void ToggleActiveSlot(int numValue) {
-        ToggleActiveHighlight(numValue - 1);
+    public void EquipStartingWeapon()
+    {
+        SelectSlot(0);
     }
 
-    private void ToggleActiveHighlight(int indexNum) {
-        activeSlotIndexNum = indexNum;
-
-        foreach (Transform inventorySlot in this.transform)
+    public bool HasWeapon(WeaponInfo weaponInfo)
+    {
+        foreach (InventorySlot slot in slots)
         {
-            inventorySlot.GetChild(0).gameObject.SetActive(false);
+            if (slot.GetWeaponInfo() == weaponInfo) { return true; }
         }
 
-        this.transform.GetChild(indexNum).GetChild(0).gameObject.SetActive(true);
-
-        ChangeActiveWeapon();
+        return false;
     }
 
-    private void ChangeActiveWeapon() {
-        if(PlayerHealth.Instance.IsDead) { return; }
+    // Puts the weapon in the first free slot. Returns false when dead, already owned or full.
+    public bool TryAddWeapon(WeaponInfo weaponInfo)
+    {
+        if (PlayerHealth.Instance.IsDead || HasWeapon(weaponInfo)) { return false; }
 
-        if(ActiveWeapon.Instance.CurrentActiveWeapon != null)
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (!slots[i].IsEmpty) { continue; }
+
+            slots[i].SetWeapon(weaponInfo);
+
+            if (i == activeSlotIndex)
+            {
+                EquipActiveSlotWeapon();
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void DropActiveWeapon()
+    {
+        if (PlayerHealth.Instance.IsDead) { return; }
+
+        InventorySlot activeSlot = slots[activeSlotIndex];
+        WeaponInfo droppedWeaponInfo = activeSlot.GetWeaponInfo();
+
+        if (droppedWeaponInfo == null || !droppedWeaponInfo.canBeDropped) { return; }
+
+        activeSlot.Clear();
+        EquipActiveSlotWeapon();
+
+        Vector2 dropPosition = (Vector2)PlayerController.Instance.transform.position + dropOffset;
+        WeaponPickup droppedPickup = Instantiate(weaponPickupPrefab, dropPosition, Quaternion.identity);
+        droppedPickup.InitializeAsDropped(droppedWeaponInfo);
+    }
+
+    private void SelectSlot(int slotIndex) {
+        if (slotIndex < 0 || slotIndex >= slots.Length) { return; }
+
+        activeSlotIndex = slotIndex;
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].SetHighlighted(i == activeSlotIndex);
+        }
+
+        EquipActiveSlotWeapon();
+    }
+
+    private void EquipActiveSlotWeapon() {
+        if (PlayerHealth.Instance.IsDead) { return; }
+
+        if (ActiveWeapon.Instance.CurrentActiveWeapon != null)
+        {
             Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
+        }
 
+        WeaponInfo weaponInfo = slots[activeSlotIndex].GetWeaponInfo();
 
-        // GameObject weaponToSpawn = transform.GetChild(activeSlotIndexNum).
-        // GetComponentInChildren<InventorySlot>().GetWeaponInfo().weaponPrefab;
-        // you can see how better and more orginazed this code below looks.
-
-        Transform childTransform = transform.GetChild(activeSlotIndexNum);
-        InventorySlot inventorySlot = childTransform.GetComponentInChildren<InventorySlot>();
-        WeaponInfo weaponInfo = inventorySlot.GetWeaponInfo();
-
-        if(weaponInfo == null)
+        if (weaponInfo == null)
         {
             ActiveWeapon.Instance.WeaponNull();
             return;
         }
 
-        GameObject weaponToSpawn = weaponInfo.weaponPrefab;
-
-
-
-        GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity);
-        ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0,0,0);
+        GameObject newWeapon = Instantiate(weaponInfo.weaponPrefab, ActiveWeapon.Instance.transform.position, Quaternion.identity);
+        ActiveWeapon.Instance.transform.rotation = Quaternion.identity;
         newWeapon.transform.parent = ActiveWeapon.Instance.transform;
 
         ActiveWeapon.Instance.NewWeapon(newWeapon.GetComponent<MonoBehaviour>());

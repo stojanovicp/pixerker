@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class ActiveWeapon : Singleton<ActiveWeapon>
@@ -6,11 +5,9 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     public MonoBehaviour CurrentActiveWeapon { get; private set; }
     public WeaponInfo CurrentWeaponInfo { get; private set; }
 
+    private readonly WeaponCooldowns weaponCooldowns = new WeaponCooldowns();
     private PlayerControls playerControls;
-    private float timeBetweenAttacks;
-
-    private bool attackButtonDown, isAttacking = false;
-
+    private bool attackButtonDown;
 
     protected override void Awake() {
         base.Awake();
@@ -34,8 +31,6 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     {
         playerControls.Combat.Attack.started += _ => StartAttacking();
         playerControls.Combat.Attack.canceled += _ => StopAttacking();
-
-        AttackCooldown();
     }
 
     private void Update() {
@@ -46,8 +41,6 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     {
         CurrentActiveWeapon = newWeapon;
         CurrentWeaponInfo = (CurrentActiveWeapon as IWeapon).GetWeaponInfo();
-        timeBetweenAttacks = CurrentWeaponInfo.weaponCooldown;
-        AttackCooldown();
     }
 
     public void WeaponNull()
@@ -56,17 +49,9 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         CurrentWeaponInfo = null;
     }
 
-    
-    private void AttackCooldown() {
-        isAttacking = true;
-        StopAllCoroutines();
-        StartCoroutine(TimeBetweenAttacksRoutine());
-    }
-
-    private IEnumerator TimeBetweenAttacksRoutine()
+    public float GetCooldownRemainingFraction(WeaponInfo weaponInfo)
     {
-        yield return new WaitForSeconds(timeBetweenAttacks);
-        isAttacking = false;
+        return weaponCooldowns.GetRemainingFraction(weaponInfo);
     }
 
     private void StartAttacking()
@@ -80,9 +65,10 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     }
 
     private void Attack() {
-        if (attackButtonDown && !isAttacking && CurrentActiveWeapon) {
-            AttackCooldown();
-            (CurrentActiveWeapon as IWeapon).Attack();
-        }
+        if (!attackButtonDown || CurrentActiveWeapon == null) { return; }
+        if (!weaponCooldowns.IsReady(CurrentWeaponInfo)) { return; }
+
+        weaponCooldowns.StartCooldown(CurrentWeaponInfo);
+        (CurrentActiveWeapon as IWeapon).Attack();
     }
 }

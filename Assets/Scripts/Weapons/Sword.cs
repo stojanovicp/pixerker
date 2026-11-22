@@ -15,12 +15,9 @@ public class Sword : MonoBehaviour, IWeapon
 
     readonly int ATTACK_HASH = Animator.StringToHash("Attack");
 
+    // References are resolved in Awake (runs inside Instantiate) because Attack can be called in the same frame the weapon is equipped.
     private void Awake() {
         myAnimator = GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
         weaponCollider = PlayerController.Instance.GetWeaponCollider();
         weaponDamageSource = weaponCollider.GetComponent<DamageSource>();
         slashAnimationSpawnPoint = PlayerController.Instance.GetSlashAnimationSpawnPoint();

@@ -9,4 +9,6 @@ public class WeaponInfo : ScriptableObject
     public float weaponRange;
     public float knockbackForce;
     public WeaponAimMode aimMode;
+    public Sprite icon;
+    public bool canBeDropped = true;
 }

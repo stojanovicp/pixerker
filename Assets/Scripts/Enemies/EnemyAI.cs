@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     public EnemyStats Stats => stats;
     public int ContactDamage => stats.contactDamage;
     public bool CanAttack => attack != null && stats.attackRange > 0f;
+    public bool IsPlayerAlive => !PlayerHealth.Instance.IsDead;
     public float DistanceToPlayer => Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
 
     public EnemyRoamState RoamState { get; private set; }
@@ -41,8 +42,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerController.Instance == null) { return; }
-
         stateMachine.Tick();
     }
 

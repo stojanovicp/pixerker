@@ -1,24 +1,24 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Singleton<PlayerHealth>
 {
     public static event Action<int, int> HealthChanged;
 
+    public event Action Died;
+
     public bool IsDead { get; private set; }
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private float knockbackForce = 10f;
     [SerializeField] private float damageRecoveryTime = 0.5f;
-    [SerializeField] private float respawnDelay = 2f;
 
     private int currentHealth;
     private bool canTakeDamage = true;
     private Knockback knockback;
     private Flash flash;
+    private Animator myAnimator;
 
-    const string RESPAWN = "Scene_1";
     readonly int DEATH_HASH = Animator.StringToHash("Death");
 
     protected override void Awake()
@@ -29,6 +29,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
         knockback = GetComponent<Knockback>();
         flash = GetComponent<Flash>();
+        myAnimator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -56,27 +57,6 @@ public class PlayerHealth : Singleton<PlayerHealth>
         RaiseHealthChanged();
     }
 
-    private void CheckIfPlayerDeath()
-    {
-        if(currentHealth <= 0 && !IsDead)
-        {
-            IsDead = true;
-            Destroy(ActiveWeapon.Instance.gameObject);
-            currentHealth = 0;
-            GetComponent<Animator>().SetTrigger(DEATH_HASH);
-            StartCoroutine(DeathLoadSceneRoutine());
-        }
-    }
-
-    private IEnumerator DeathLoadSceneRoutine()
-    {
-        yield return new WaitForSeconds(respawnDelay);
-        Destroy(gameObject);
-        Stamina.Instance.ReplenishStaminaOnDeath();
-        SceneManagement.Instance.ClearTransitionName();
-        SceneManager.LoadScene(RESPAWN);
-    }
-
     public void TakeDamage(int damage, Transform hitTransform)
     {
         if(!canTakeDamage || IsDead) { return; }
@@ -86,7 +66,6 @@ public class PlayerHealth : Singleton<PlayerHealth>
         canTakeDamage = false;
         currentHealth -= damage;
 
-
         knockback.GetKnockedBack(hitTransform.position, knockbackForce);
         StartCoroutine(flash.FlashRoutine());
 
@@ -94,6 +73,35 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
         CheckIfPlayerDeath();
         RaiseHealthChanged();
+    }
+
+    // Clears everything a death can leave behind: health, i-frames, knockback, flash and the death animation.
+    public void ResetForRespawn()
+    {
+        StopAllCoroutines();
+
+        IsDead = false;
+        canTakeDamage = true;
+        currentHealth = maxHealth;
+
+        knockback.ResetKnockback();
+        flash.RestoreDefaultMaterial();
+
+        myAnimator.Rebind();
+        myAnimator.Update(0f);
+
+        RaiseHealthChanged();
+    }
+
+    private void CheckIfPlayerDeath()
+    {
+        if(currentHealth <= 0 && !IsDead)
+        {
+            IsDead = true;
+            currentHealth = 0;
+            myAnimator.SetTrigger(DEATH_HASH);
+            Died?.Invoke();
+        }
     }
 
     private IEnumerator DamageRecoveryRoutine()

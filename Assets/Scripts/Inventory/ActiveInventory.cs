@@ -24,7 +24,7 @@ public class ActiveInventory : Singleton<ActiveInventory>
 
     private void Start()
     {
-        playerControls.Inventory.Keyboard.performed += ctx => SelectSlot((int)ctx.ReadValue<float>() - 1);
+        playerControls.Inventory.Keyboard.performed += ctx => OnSlotKeyPressed((int)ctx.ReadValue<float>());
         playerControls.Inventory.Drop.performed += _ => DropActiveWeapon();
     }
 
@@ -39,6 +39,16 @@ public class ActiveInventory : Singleton<ActiveInventory>
     public void EquipStartingWeapon()
     {
         SelectSlot(0);
+    }
+
+    public void UnequipWeapon()
+    {
+        if (ActiveWeapon.Instance.CurrentActiveWeapon != null)
+        {
+            Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
+        }
+
+        ActiveWeapon.Instance.WeaponNull();
     }
 
     public bool HasWeapon(WeaponInfo weaponInfo)
@@ -90,6 +100,12 @@ public class ActiveInventory : Singleton<ActiveInventory>
         droppedPickup.InitializeAsDropped(droppedWeaponInfo);
     }
 
+    private void OnSlotKeyPressed(int slotNumber) {
+        if (PlayerHealth.Instance.IsDead) { return; }
+
+        SelectSlot(slotNumber - 1);
+    }
+
     private void SelectSlot(int slotIndex) {
         if (slotIndex < 0 || slotIndex >= slots.Length) { return; }
 
@@ -106,18 +122,11 @@ public class ActiveInventory : Singleton<ActiveInventory>
     private void EquipActiveSlotWeapon() {
         if (PlayerHealth.Instance.IsDead) { return; }
 
-        if (ActiveWeapon.Instance.CurrentActiveWeapon != null)
-        {
-            Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
-        }
+        UnequipWeapon();
 
         WeaponInfo weaponInfo = slots[activeSlotIndex].GetWeaponInfo();
 
-        if (weaponInfo == null)
-        {
-            ActiveWeapon.Instance.WeaponNull();
-            return;
-        }
+        if (weaponInfo == null) { return; }
 
         GameObject newWeapon = Instantiate(weaponInfo.weaponPrefab, ActiveWeapon.Instance.transform.position, Quaternion.identity);
         ActiveWeapon.Instance.transform.rotation = Quaternion.identity;

@@ -20,6 +20,12 @@ public class Knockback : MonoBehaviour
         StartCoroutine(KnockRoutine());
     }
 
+    public void ResetKnockback() {
+        StopAllCoroutines();
+        rb.linearVelocity = Vector2.zero;
+        GettingKnockedBack = false;
+    }
+
     private IEnumerator KnockRoutine() {
         yield return new WaitForSeconds(knockBackTime);
         rb.linearVelocity = Vector2.zero;

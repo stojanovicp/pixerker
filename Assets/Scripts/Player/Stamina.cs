@@ -47,8 +47,9 @@ public class Stamina : Singleton<Stamina>
         }
     }
 
-    public void ReplenishStaminaOnDeath()
+    public void ResetForRespawn()
     {
+        StopAllCoroutines();
         CurrentStamina = maxStamina;
         RaiseStaminaChanged();
     }

@@ -37,7 +37,11 @@ public class Pickup : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerController.Instance == null) { return; }
+        if (PlayerHealth.Instance.IsDead)
+        {
+            moveDir = Vector3.zero;
+            return;
+        }
 
         Vector3 playerPos = PlayerController.Instance.transform.position;
 
@@ -59,7 +63,7 @@ public class Pickup : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<PlayerController>())
+        if(collision.gameObject.GetComponent<PlayerController>() && !PlayerHealth.Instance.IsDead)
         {
             Destroy(gameObject);
             DetectPickupType();

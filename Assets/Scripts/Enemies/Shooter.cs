@@ -39,7 +39,7 @@ public class Shooter : MonoBehaviour, IEnemy
 
     private IEnumerator ShootRoutine()
     {
-        if (PlayerController.Instance == null) { yield break; }
+        if (PlayerHealth.Instance.IsDead) { yield break; }
 
         isShooting = true;
 
@@ -52,7 +52,7 @@ public class Shooter : MonoBehaviour, IEnemy
 
         for (int i = 0; i < burstCount; i++)
         {
-            if (PlayerController.Instance == null) { break; }
+            if (PlayerHealth.Instance.IsDead) { break; }
 
             if(!oscilate)
             {

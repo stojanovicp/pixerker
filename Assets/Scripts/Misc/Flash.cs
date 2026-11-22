@@ -21,6 +21,11 @@ public class Flash : MonoBehaviour
     public IEnumerator FlashRoutine() {
         spriteRenderer.material = whiteFlashMat;
         yield return new WaitForSeconds(restoreDefaultMatTime);
+        RestoreDefaultMaterial();
+    }
+
+    // The caller owns the flash coroutine; it must stop it before calling this mid-flash.
+    public void RestoreDefaultMaterial() {
         spriteRenderer.material = defaultMat;
     }
 }

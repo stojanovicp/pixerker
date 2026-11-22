@@ -13,7 +13,7 @@ public class EnemyChaseState : IState
     {
         float distanceToPlayer = enemy.DistanceToPlayer;
 
-        if (distanceToPlayer > enemy.Stats.loseRange)
+        if (!enemy.IsPlayerAlive || distanceToPlayer > enemy.Stats.loseRange)
         {
             enemy.ChangeState(enemy.RoamState);
             return;

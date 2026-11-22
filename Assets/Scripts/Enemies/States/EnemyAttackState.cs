@@ -11,6 +11,12 @@ public class EnemyAttackState : IState
 
     public void Tick()
     {
+        if (!enemy.IsPlayerAlive)
+        {
+            enemy.ChangeState(enemy.RoamState);
+            return;
+        }
+
         if (enemy.DistanceToPlayer > enemy.Stats.attackRange)
         {
             enemy.ChangeState(enemy.ChaseState);

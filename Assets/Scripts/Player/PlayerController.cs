@@ -88,7 +88,20 @@ public class PlayerController : Singleton<PlayerController>
         rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
     }
 
+    // Clears dash state, trail and leftover velocity in case the player died mid-dash or mid-knockback.
+    public void ResetForRespawn() {
+        StopAllCoroutines();
+        isDashing = false;
+        moveSpeed = startingMoveSpeed;
+        myTrailRenderer.emitting = false;
+        myTrailRenderer.Clear();
+        movement = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
+    }
+
     private void AdjustPlayerFacingDirection() {
+        if (PlayerHealth.Instance.IsDead) { return; }
+
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
         if (MouseInput.ScreenPosition.x < playerScreenPoint.x) {

@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 4718806991243099449}
   - component: {fileID: 1004438992423983317}
   - component: {fileID: 4907085822462263761}
+  - component: {fileID: 1005524355442774868}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -714,3 +715,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Stamina
   maxStamina: 4
   timeBetweenRefresh: 3
+--- !u!114 &1005524355442774868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677999073789709207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5deca55d8e36305ed7dfdf2607ceb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawn
+  respawnSceneName: Scene_1
+  deathAnimationTime: 2
+  fadeOutTime: 1

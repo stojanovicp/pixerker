@@ -8,6 +8,8 @@ public class PlayerController : Singleton<PlayerController>
 
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float dashSpeed = 5f;
+    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float dashCooldown = 0.25f;
     [SerializeField] private TrailRenderer myTrailRenderer;
     [SerializeField] private Transform weaponCollider;
     [SerializeField] private Transform slashAnimationSpawnPoint;
@@ -22,6 +24,9 @@ public class PlayerController : Singleton<PlayerController>
 
     private bool facingLeft = false;
     private bool isDashing = false;
+
+    readonly int MOVE_X_HASH = Animator.StringToHash("moveX");
+    readonly int MOVE_Y_HASH = Animator.StringToHash("moveY");
 
     protected override void Awake() {
         base.Awake();
@@ -71,8 +76,8 @@ public class PlayerController : Singleton<PlayerController>
     private void PlayerInput() {
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
 
-        myAnimator.SetFloat("moveX", movement.x);
-        myAnimator.SetFloat("moveY", movement.y);
+        myAnimator.SetFloat(MOVE_X_HASH, movement.x);
+        myAnimator.SetFloat(MOVE_Y_HASH, movement.y);
     }
 
     private void Move() {
@@ -106,12 +111,10 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private IEnumerator EndDashRoutine() {
-        float dashTime = .2f;
-        float dashCD = .25f;
-        yield return new WaitForSeconds(dashTime);
+        yield return new WaitForSeconds(dashDuration);
         moveSpeed = startingMoveSpeed;
         myTrailRenderer.emitting = false;
-        yield return new WaitForSeconds(dashCD);
+        yield return new WaitForSeconds(dashCooldown);
         isDashing = false;
     }
 }

@@ -13,6 +13,8 @@ public class Sword : MonoBehaviour, IWeapon
     private Animator myAnimator;
     private GameObject slashAnim;
 
+    readonly int ATTACK_HASH = Animator.StringToHash("Attack");
+
     private void Awake() {
         myAnimator = GetComponent<Animator>();
     }
@@ -34,7 +36,7 @@ public class Sword : MonoBehaviour, IWeapon
     }
 
     public void Attack() {
-        myAnimator.SetTrigger("Attack");
+        myAnimator.SetTrigger(ATTACK_HASH);
         weaponDamageSource.Initialize(weaponInfo);
         weaponCollider.gameObject.SetActive(true);
         slashAnim = Instantiate(slashAnimPrefab, slashAnimationSpawnPoint.position, Quaternion.identity);

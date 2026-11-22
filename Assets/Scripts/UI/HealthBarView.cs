@@ -7,6 +7,12 @@ public class HealthBarView : MonoBehaviour
 
     private void OnEnable()
     {
+        if (healthSlider == null)
+        {
+            Debug.LogError($"{nameof(HealthBarView)} on '{name}': Health Slider is not assigned.", this);
+            return;
+        }
+
         PlayerHealth.HealthChanged += UpdateHealthBar;
     }
 

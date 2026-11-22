@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Pickup : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class Pickup : MonoBehaviour
     }
 
     [SerializeField] private PickUpType pickUpType;
+    [SerializeField] private int amount = 1;
     [SerializeField] private float pickUpDistance = 4f;
-    [SerializeField] private float accelartionRate = 0.6f;
+    [FormerlySerializedAs("accelartionRate")]
+    [SerializeField] private float accelerationRate = 0.6f;
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private AnimationCurve animationCurve;
     [SerializeField] private float heightY = 1.5f;
@@ -41,7 +44,7 @@ public class Pickup : MonoBehaviour
         if(Vector3.Distance(transform.position, playerPos) < pickUpDistance)
         {
             moveDir = (playerPos - transform.position).normalized;
-            moveSpeed += accelartionRate;
+            moveSpeed += accelerationRate;
         }
         else
         {
@@ -58,8 +61,8 @@ public class Pickup : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<PlayerController>())
         {
-            DetectPickupType();
             Destroy(gameObject);
+            DetectPickupType();
         }
     }
 
@@ -93,15 +96,15 @@ public class Pickup : MonoBehaviour
         switch(pickUpType)
         {
             case PickUpType.GoldCoin:
-                EconomyManager.Instance.UpdateCurrentGold();
+                EconomyManager.Instance.AddGold(amount);
                 break;
 
             case PickUpType.HealthGlobe:
-                PlayerHealth.Instance.HealPlayer(1);
+                PlayerHealth.Instance.HealPlayer(amount);
                 break;
 
             case PickUpType.StaminaGlobe:
-                Stamina.Instance.RefreshStamina();
+                Stamina.Instance.RefreshStamina(amount);
                 break;
             
             default:

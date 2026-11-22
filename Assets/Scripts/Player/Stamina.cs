@@ -6,6 +6,8 @@ public class Stamina : Singleton<Stamina>
 {
     public static event Action<int, int> StaminaChanged;
 
+    private const int STAMINA_PER_REGEN_TICK = 1;
+
     public int CurrentStamina { get; private set; }
 
     [SerializeField] private int maxStamina = 4;
@@ -34,11 +36,11 @@ public class Stamina : Singleton<Stamina>
         }
     }
 
-    public void RefreshStamina()
+    public void RefreshStamina(int amount)
     {
         if(CurrentStamina < maxStamina && !PlayerHealth.Instance.IsDead)
         {
-            CurrentStamina++;
+            CurrentStamina = Mathf.Min(CurrentStamina + amount, maxStamina);
             RaiseStaminaChanged();
         }
     }
@@ -54,7 +56,7 @@ public class Stamina : Singleton<Stamina>
         while(true)
         {
             yield return new WaitForSeconds(timeBetweenRefresh);
-            RefreshStamina();
+            RefreshStamina(STAMINA_PER_REGEN_TICK);
         }
     }
 

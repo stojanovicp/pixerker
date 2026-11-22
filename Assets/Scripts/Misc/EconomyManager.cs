@@ -11,9 +11,9 @@ public class EconomyManager : Singleton<EconomyManager>
         GoldChanged?.Invoke(currentGold);
     }
 
-    public void UpdateCurrentGold()
+    public void AddGold(int amount)
     {
-        currentGold += 1;
+        currentGold += amount;
         GoldChanged?.Invoke(currentGold);
     }
 }

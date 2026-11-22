@@ -9,6 +9,12 @@ public class GoldView : MonoBehaviour
 
     private void OnEnable()
     {
+        if (goldText == null)
+        {
+            Debug.LogError($"{nameof(GoldView)} on '{name}': Gold Text is not assigned.", this);
+            return;
+        }
+
         EconomyManager.GoldChanged += UpdateGoldText;
     }
 

@@ -11,6 +11,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private float knockbackForce = 10f;
     [SerializeField] private float damageRecoveryTime = 0.5f;
+    [SerializeField] private float respawnDelay = 2f;
 
     private int currentHealth;
     private bool canTakeDamage = true;
@@ -67,7 +68,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     private IEnumerator DeathLoadSceneRoutine()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(respawnDelay);
         Destroy(gameObject);
         Stamina.Instance.ReplenishStaminaOnDeath();
         SceneManagement.Instance.ClearTransitionName();
@@ -89,8 +90,8 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
         StartCoroutine(DamageRecoveryRoutine());
 
-        RaiseHealthChanged();
         CheckIfPlayerDeath();
+        RaiseHealthChanged();
     }
 
     private IEnumerator DamageRecoveryRoutine()

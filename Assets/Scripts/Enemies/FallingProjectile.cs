@@ -8,9 +8,7 @@ public class FallingProjectile : MonoBehaviour
     [SerializeField] private float heightY = 3f;
     [SerializeField] private GameObject grapeProjectileShadow;
     [SerializeField] private GameObject splatterPrefab;
-
-
-    
+    [SerializeField] private float shadowOffsetY = -0.3f;
 
     private void Start()
     {
@@ -20,7 +18,7 @@ public class FallingProjectile : MonoBehaviour
             return;
         }
 
-        GameObject grapeShadow = Instantiate(grapeProjectileShadow, transform.position + new Vector3(0, -0.3f, 0), Quaternion.identity);
+        GameObject grapeShadow = Instantiate(grapeProjectileShadow, transform.position + new Vector3(0f, shadowOffsetY, 0f), Quaternion.identity);
 
         Vector3 playerPos = PlayerController.Instance.transform.position;
         Vector3 grapeShadowStartPosition = grapeShadow.transform.position;

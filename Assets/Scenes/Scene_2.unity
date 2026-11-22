@@ -2614,7 +2614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92319498}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.43, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5332,7 +5332,11 @@ MonoBehaviour:
         m_SelectedSource:
           rid: -2
         m_Provider2DCache:
-          rid: -2
+          rid: 8232625695927566445
+    - rid: 8232625695927566445
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data:
+        m_Cache: []
 --- !u!4 &619394802
 Transform:
   m_ObjectHideFlags: 0
@@ -29506,6 +29510,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5246226957247441048, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.948752
+      objectReference: {fileID: 0}
     - target: {fileID: 7345621425327602676, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
       propertyPath: AnimatedTarget
       value: 
@@ -36158,13 +36166,13 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1805957414}
-  - {fileID: 169244888}
-  - {fileID: 1739426995}
   - {fileID: 619394802}
   - {fileID: 667989810}
   - {fileID: 1232275069}
-  - {fileID: 609646815}
   - {fileID: 1284457100}
-  - {fileID: 1434909539}
   - {fileID: 92319502}
+  - {fileID: 609646815}
+  - {fileID: 1434909539}
+  - {fileID: 1805957414}
+  - {fileID: 169244888}
+  - {fileID: 1739426995}

@@ -13476,6 +13476,10 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: Scene_10
       objectReference: {fileID: 0}
+    - target: {fileID: 450813640155658054, guid: f457f3be07803204181bf4837dc272a1, type: 3}
+      propertyPath: sceneTransitionName
+      value: East_Entrance
+      objectReference: {fileID: 0}
     - target: {fileID: 2356353412623518327, guid: f457f3be07803204181bf4837dc272a1, type: 3}
       propertyPath: m_Name
       value: Previous

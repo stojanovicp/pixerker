@@ -13720,11 +13720,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4437170889741094349, guid: 4973bbc8c11047d49a804665850b9472, type: 3}
   m_PrefabInstance: {fileID: 1453970990}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1390579577 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6704280415837319285, guid: a78112f7678542645a67d6790ed15387, type: 3}
-  m_PrefabInstance: {fileID: 1284457100}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1410873589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26787,6 +26782,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4040331880532807791, guid: b25822e8b9cb2d84a9ec715d19e967af, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040331880532807791, guid: b25822e8b9cb2d84a9ec715d19e967af, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4890155955544657240, guid: b25822e8b9cb2d84a9ec715d19e967af, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -27235,13 +27238,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5246226957247441048, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -14.331902
+      propertyPath: m_LocalPosition.z
+      value: -2.036185
       objectReference: {fileID: 0}
-    - target: {fileID: 7345621425327602676, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
-      propertyPath: AnimatedTarget
-      value: 
-      objectReference: {fileID: 1390579577}
     - target: {fileID: 8559447249528320993, guid: afc324c9411dbbe40ab449c0d9803622, type: 3}
       propertyPath: m_Name
       value: Cameras

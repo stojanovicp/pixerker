@@ -25,6 +25,8 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         base.Awake();
 
+        if (Instance != this) { return; }
+
         knockback = GetComponent<Knockback>();
         flash = GetComponent<Flash>();
     }

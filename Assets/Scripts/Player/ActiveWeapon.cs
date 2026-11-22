@@ -15,17 +15,19 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     protected override void Awake() {
         base.Awake();
 
+        if (Instance != this) { return; }
+
         playerControls = new PlayerControls();
     }
 
     private void OnEnable()
     {
-        playerControls.Enable();
+        playerControls?.Enable();
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        playerControls?.Disable();
     }
 
     private void Start()

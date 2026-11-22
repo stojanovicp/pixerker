@@ -9,6 +9,8 @@ public class ActiveInventory : Singleton<ActiveInventory>
     protected override void Awake() {
         base.Awake();
 
+        if (Instance != this) { return; }
+
         playerControls = new PlayerControls();
     }
 
@@ -24,11 +26,11 @@ public class ActiveInventory : Singleton<ActiveInventory>
     }
 
     private void OnEnable() {
-        playerControls.Enable();
+        playerControls?.Enable();
     }
 
     private void OnDisable() {
-        playerControls.Disable();
+        playerControls?.Disable();
     }
 
     private void ToggleActiveSlot(int numValue) {

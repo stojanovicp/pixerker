@@ -17,6 +17,8 @@ public class Stamina : Singleton<Stamina>
     {
         base.Awake();
 
+        if (Instance != this) { return; }
+
         CurrentStamina = maxStamina;
     }
 

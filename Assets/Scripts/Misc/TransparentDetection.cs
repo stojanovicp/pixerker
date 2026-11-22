@@ -27,6 +27,9 @@ public class TransparentDetection : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
+        // Exit also fires while this object is being disabled (scene unload, leaving Play Mode); a coroutine can't start then.
+        if (!isActiveAndEnabled) { return; }
+
         if (other.gameObject.GetComponent<PlayerController>())
         {
             if (spriteRenderer) {

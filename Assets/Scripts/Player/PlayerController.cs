@@ -31,6 +31,8 @@ public class PlayerController : Singleton<PlayerController>
     protected override void Awake() {
         base.Awake();
 
+        if (Instance != this) { return; }
+
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -47,11 +49,11 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void OnEnable() {
-        playerControls.Enable();
+        playerControls?.Enable();
     }
 
     private void OnDisable() {
-        playerControls.Disable();
+        playerControls?.Disable();
     }
 
     private void Update() {

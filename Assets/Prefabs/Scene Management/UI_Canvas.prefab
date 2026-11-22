@@ -1483,7 +1483,6 @@ MonoBehaviour:
   - {fileID: 92326588092292393}
   - {fileID: 646600067553465536}
   - {fileID: 8331725266109457337}
-  weaponPickupPrefab: {fileID: 2591288908880164870, guid: 2396a116c6a7d674cbcd50b213ddbfa4, type: 3}
   dropOffset: {x: 0, y: -0.3}
 --- !u!1 &4715673670786327600
 GameObject:

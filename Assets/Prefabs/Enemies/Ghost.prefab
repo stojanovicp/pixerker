@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4833482284134813936}
   - component: {fileID: 466936992894745764}
   - component: {fileID: 6267826929569153811}
+  - component: {fileID: 1035818028354292082}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -363,3 +364,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1035818028354292082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394896299141930381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f909920756ad06a9f0e6699cd1c2a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PersistentObject

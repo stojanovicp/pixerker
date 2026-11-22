@@ -36,6 +36,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if (isDead || currentHealth > 0) { return; }
 
         isDead = true;
+
+        if (TryGetComponent(out PersistentObject persistentObject)) {
+            persistentObject.MarkRemoved();
+        }
+
         Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
 
         if (TryGetComponent(out PickupSpawner pickupSpawner)) {

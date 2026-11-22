@@ -1,9 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ActiveInventory : Singleton<ActiveInventory>
 {
     [SerializeField] private InventorySlot[] slots;
-    [SerializeField] private WeaponPickup weaponPickupPrefab;
     [SerializeField] private Vector2 dropOffset = new Vector2(0f, -0.3f);
 
     private int activeSlotIndex = 0;
@@ -14,9 +14,9 @@ public class ActiveInventory : Singleton<ActiveInventory>
 
         if (Instance != this) { return; }
 
-        if (slots == null || slots.Length == 0 || weaponPickupPrefab == null)
+        if (slots == null || slots.Length == 0)
         {
-            Debug.LogError($"{nameof(ActiveInventory)} on '{name}': assign Slots and Weapon Pickup Prefab.", this);
+            Debug.LogError($"{nameof(ActiveInventory)} on '{name}': assign Slots.", this);
         }
 
         playerControls = new PlayerControls();
@@ -96,8 +96,8 @@ public class ActiveInventory : Singleton<ActiveInventory>
         EquipActiveSlotWeapon();
 
         Vector2 dropPosition = (Vector2)PlayerController.Instance.transform.position + dropOffset;
-        WeaponPickup droppedPickup = Instantiate(weaponPickupPrefab, dropPosition, Quaternion.identity);
-        droppedPickup.InitializeAsDropped(droppedWeaponInfo);
+        string sceneName = SceneManager.GetActiveScene().name;
+        WorldState.AddDroppedWeapon(new DroppedWeaponRecord(sceneName, droppedWeaponInfo, dropPosition));
     }
 
     private void OnSlotKeyPressed(int slotNumber) {

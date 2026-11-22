@@ -620,8 +620,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1713687019385581802, guid: 2396a116c6a7d674cbcd50b213ddbfa4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 294263606}
   m_SourcePrefab: {fileID: 100100000, guid: 2396a116c6a7d674cbcd50b213ddbfa4, type: 3}
+--- !u!1 &294263605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1713687019385581802, guid: 2396a116c6a7d674cbcd50b213ddbfa4, type: 3}
+  m_PrefabInstance: {fileID: 294263604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &294263606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294263605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f909920756ad06a9f0e6699cd1c2a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PersistentObject
 --- !u!1001 &316018970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15432,8 +15452,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1713687019385581802, guid: 2396a116c6a7d674cbcd50b213ddbfa4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1573196745}
   m_SourcePrefab: {fileID: 100100000, guid: 2396a116c6a7d674cbcd50b213ddbfa4, type: 3}
+--- !u!1 &1573196744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1713687019385581802, guid: 2396a116c6a7d674cbcd50b213ddbfa4, type: 3}
+  m_PrefabInstance: {fileID: 1573196743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1573196745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573196744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f909920756ad06a9f0e6699cd1c2a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PersistentObject
 --- !u!1001 &1591019388
 PrefabInstance:
   m_ObjectHideFlags: 0

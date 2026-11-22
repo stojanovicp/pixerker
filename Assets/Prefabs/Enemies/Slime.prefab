@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 5459264145143938891}
   - component: {fileID: 1270286378873940543}
   - component: {fileID: -222674703945991716}
+  - component: {fileID: 1067078554970389216}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -390,3 +391,15 @@ MonoBehaviour:
   goldCoin: {fileID: 1713687019385581802, guid: db552984bb7585a42856aa74b12a7a81, type: 3}
   healthGlobe: {fileID: 1713687019385581802, guid: 93ee405b1d3de6545805b6d5d2a3e652, type: 3}
   staminaGlobe: {fileID: 1713687019385581802, guid: 6f5056d2f7c59054f8e242c407afa084, type: 3}
+--- !u!114 &1067078554970389216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8271492522172504985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f909920756ad06a9f0e6699cd1c2a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PersistentObject

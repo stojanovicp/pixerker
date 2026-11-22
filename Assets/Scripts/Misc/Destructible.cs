@@ -11,6 +11,10 @@ public class Destructible : MonoBehaviour, IDamageable
 
         isDestroyed = true;
 
+        if (TryGetComponent(out PersistentObject persistentObject)) {
+            persistentObject.MarkRemoved();
+        }
+
         if (TryGetComponent(out PickupSpawner pickupSpawner)) {
             pickupSpawner.DropItems();
         }

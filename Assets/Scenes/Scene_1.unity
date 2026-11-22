@@ -35520,10 +35520,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5230323672562339232, guid: b25822e8b9cb2d84a9ec715d19e967af, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 40.94287
-      objectReference: {fileID: 0}
     - target: {fileID: 5903048375548910690, guid: b25822e8b9cb2d84a9ec715d19e967af, type: 3}
       propertyPath: m_Name
       value: UI_Canvas
@@ -35741,14 +35737,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 872685357667449319, guid: a78112f7678542645a67d6790ed15387, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 872685357667449319, guid: a78112f7678542645a67d6790ed15387, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.38
-      objectReference: {fileID: 0}
     - target: {fileID: 1456794638039770476, guid: a78112f7678542645a67d6790ed15387, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.84

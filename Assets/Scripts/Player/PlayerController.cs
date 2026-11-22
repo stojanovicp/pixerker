@@ -50,10 +50,10 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Update() {
         PlayerInput();
+        AdjustPlayerFacingDirection();
     }
 
     private void FixedUpdate() {
-        AdjustPlayerFacingDirection();
         Move();
     }
 
@@ -76,10 +76,9 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void AdjustPlayerFacingDirection() {
-        Vector3 mousePos = Input.mousePosition;
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
-        if (mousePos.x < playerScreenPoint.x) {
+        if (MouseInput.ScreenPosition.x < playerScreenPoint.x) {
             mySpriteRender.flipX = true;
             facingLeft = true;
         } else {

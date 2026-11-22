@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 public class MagicLaser : MonoBehaviour
@@ -57,9 +56,6 @@ public class MagicLaser : MonoBehaviour
     }
     private void LaserFaceMouse()
     {
-        Vector3 mousePostition = Input.mousePosition;
-        mousePostition = Camera.main.ScreenToWorldPoint(mousePostition);
-        Vector2 direction = transform.position - mousePostition;
-        transform.right = -direction;
+        transform.right = MouseInput.WorldPosition - (Vector2)transform.position;
     }
 }

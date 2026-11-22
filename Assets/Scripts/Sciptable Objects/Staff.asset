@@ -17,3 +17,4 @@ MonoBehaviour:
   weaponDamage: 2
   weaponRange: 8
   knockbackForce: 15
+  aimMode: 1

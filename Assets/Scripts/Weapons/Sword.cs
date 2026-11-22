@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Runs after PlayerController (default order 0) so the collider flip reads this frame's FacingLeft.
+[DefaultExecutionOrder(1)]
 public class Sword : MonoBehaviour, IWeapon
 {
     [SerializeField] private GameObject slashAnimPrefab;
@@ -23,7 +25,7 @@ public class Sword : MonoBehaviour, IWeapon
     }
 
     private void Update() {
-        MouseFollowWithOffset();
+        FlipWeaponColliderToFacing();
     }
 
     public WeaponInfo GetWeaponInfo()
@@ -64,18 +66,8 @@ public class Sword : MonoBehaviour, IWeapon
         }
     }
 
-    private void MouseFollowWithOffset() {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(PlayerController.Instance.transform.position);
-
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-
-        if (mousePos.x < playerScreenPoint.x) {
-            ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, -180, angle);
-            weaponCollider.transform.rotation = Quaternion.Euler(0, -180, 0);
-        } else {
-            ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, angle);
-            weaponCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
+    private void FlipWeaponColliderToFacing() {
+        float yRotation = PlayerController.Instance.FacingLeft ? WeaponAim.MIRRORED_Y_ROTATION : 0f;
+        weaponCollider.rotation = Quaternion.Euler(0f, yRotation, 0f);
     }
 }

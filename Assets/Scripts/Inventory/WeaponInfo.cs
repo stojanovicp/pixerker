@@ -8,4 +8,5 @@ public class WeaponInfo : ScriptableObject
     public int weaponDamage;
     public float weaponRange;
     public float knockbackForce;
+    public WeaponAimMode aimMode;
 }

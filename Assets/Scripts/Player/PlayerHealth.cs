@@ -1,24 +1,23 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Singleton<PlayerHealth>
 {
+    public static event Action<int, int> HealthChanged;
+
     public bool IsDead { get; private set; }
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private float knockbackForce = 10f;
     [SerializeField] private float damageRecoveryTime = 0.5f;
 
-    private Slider healthSlider;
     private int currentHealth;
     private bool canTakeDamage = true;
     private Knockback knockback;
     private Flash flash;
 
-    const String HEALTH_SLIDER_TEXT = "Health Slider";
-    const String RESPAWN = "Scene_1";
+    const string RESPAWN = "Scene_1";
     readonly int DEATH_HASH = Animator.StringToHash("Death");
 
     protected override void Awake()
@@ -33,7 +32,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         IsDead = false;
         currentHealth = maxHealth;
-        UpdateHealthSlider();
+        RaiseHealthChanged();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -51,7 +50,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         if(IsDead) { return; }
 
         currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
-        UpdateHealthSlider();
+        RaiseHealthChanged();
     }
 
     private void CheckIfPlayerDeath()
@@ -90,7 +89,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
         StartCoroutine(DamageRecoveryRoutine());
 
-        UpdateHealthSlider();
+        RaiseHealthChanged();
         CheckIfPlayerDeath();
     }
 
@@ -100,14 +99,8 @@ public class PlayerHealth : Singleton<PlayerHealth>
         canTakeDamage = true;
     }
 
-    private void UpdateHealthSlider()
+    private void RaiseHealthChanged()
     {
-        if(healthSlider == null)
-        {
-            healthSlider = GameObject.Find(HEALTH_SLIDER_TEXT).GetComponent<Slider>();
-        }
-
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = currentHealth;
+        HealthChanged?.Invoke(currentHealth, maxHealth);
     }
 }

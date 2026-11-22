@@ -1,30 +1,26 @@
+using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Stamina : Singleton<Stamina>
 {
+    public static event Action<int, int> StaminaChanged;
+
     public int CurrentStamina { get; private set; }
 
-    [SerializeField] private Sprite fullStaminaImage, emptyStaminaImage;
+    [SerializeField] private int maxStamina = 4;
     [SerializeField] private int timeBetweenRefresh = 3;
-
-    private Transform staminaContainer;
-    private int startingStamina = 4;
-    private int maxStamina;
-    const string STAMINA_CONTAINER_TEXT = "Stamina Container";
 
     protected override void Awake()
     {
         base.Awake();
 
-        maxStamina = startingStamina;
-        CurrentStamina = startingStamina;
+        CurrentStamina = maxStamina;
     }
 
     private void Start()
     {
-        staminaContainer = GameObject.Find(STAMINA_CONTAINER_TEXT).transform;
+        RaiseStaminaChanged();
     }
 
     public void UseStamina()
@@ -32,9 +28,9 @@ public class Stamina : Singleton<Stamina>
         if(CurrentStamina > 0)
         {
             CurrentStamina--;
-            UpdateStaminaImages(); 
+            RaiseStaminaChanged();
             StopAllCoroutines();
-            StartCoroutine(RefreshStaminaRoutine());   
+            StartCoroutine(RefreshStaminaRoutine());
         }
     }
 
@@ -43,15 +39,16 @@ public class Stamina : Singleton<Stamina>
         if(CurrentStamina < maxStamina && !PlayerHealth.Instance.IsDead)
         {
             CurrentStamina++;
-            UpdateStaminaImages();
+            RaiseStaminaChanged();
         }
     }
 
     public void ReplenishStaminaOnDeath()
     {
-        CurrentStamina = startingStamina;
-        UpdateStaminaImages();
+        CurrentStamina = maxStamina;
+        RaiseStaminaChanged();
     }
+
     private IEnumerator RefreshStaminaRoutine()
     {
         while(true)
@@ -60,21 +57,9 @@ public class Stamina : Singleton<Stamina>
             RefreshStamina();
         }
     }
-    private void UpdateStaminaImages()
-    {
-        for(int i = 0; i < maxStamina; i++)
-        {
-            Transform child = staminaContainer.GetChild(i); 
-            Image image = child.GetComponent<Image>();
 
-            if(i <= CurrentStamina - 1)
-            {
-                image.sprite = fullStaminaImage;
-            }
-            else
-            {
-                image.sprite = emptyStaminaImage;
-            }
-        }
+    private void RaiseStaminaChanged()
+    {
+        StaminaChanged?.Invoke(CurrentStamina, maxStamina);
     }
 }

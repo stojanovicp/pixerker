@@ -5,9 +5,9 @@ using UnityEngine;
 public class Sword : MonoBehaviour, IWeapon
 {
     [SerializeField] private GameObject slashAnimPrefab;
-    [SerializeField] private Transform slashAnimSpawnPoint;
     [SerializeField] private WeaponInfo weaponInfo;
 
+    private Transform slashAnimationSpawnPoint;
     private Transform weaponCollider;
     private DamageSource weaponDamageSource;
     private Animator myAnimator;
@@ -21,7 +21,7 @@ public class Sword : MonoBehaviour, IWeapon
     {
         weaponCollider = PlayerController.Instance.GetWeaponCollider();
         weaponDamageSource = weaponCollider.GetComponent<DamageSource>();
-        slashAnimSpawnPoint = GameObject.Find("SlashAnimationSpawnPoint").transform;
+        slashAnimationSpawnPoint = PlayerController.Instance.GetSlashAnimationSpawnPoint();
     }
 
     private void Update() {
@@ -37,7 +37,7 @@ public class Sword : MonoBehaviour, IWeapon
         myAnimator.SetTrigger("Attack");
         weaponDamageSource.Initialize(weaponInfo);
         weaponCollider.gameObject.SetActive(true);
-        slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
+        slashAnim = Instantiate(slashAnimPrefab, slashAnimationSpawnPoint.position, Quaternion.identity);
         slashAnim.transform.parent = this.transform.parent;
     }
 

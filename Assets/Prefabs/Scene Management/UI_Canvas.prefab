@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 7468807718897683658}
   - component: {fileID: 573390681463223755}
   - component: {fileID: 4440408400699217231}
+  - component: {fileID: 8399685378996610802}
   m_Layer: 5
   m_Name: Gold Amount Text
   m_TagString: Untagged
@@ -453,6 +454,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8399685378996610802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365209141837810864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d93a3d7e8ebf3f489c513e115acf1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoldView
+  goldText: {fileID: 4440408400699217231}
 --- !u!1 &1375766994599137510
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7697967102274236882}
   - component: {fileID: 6755848129232767164}
+  - component: {fileID: 7316568891597229280}
   m_Layer: 5
   m_Name: Health Slider
   m_TagString: Untagged
@@ -653,6 +668,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7316568891597229280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211135268781163700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d507c6188304f429b79188b72946ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBarView
+  healthSlider: {fileID: 6755848129232767164}
 --- !u!1 &2276017328809682581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,6 +1325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1855691666333805883}
   - component: {fileID: 1921124717698670038}
+  - component: {fileID: 1724348524626233002}
   m_Layer: 5
   m_Name: Stamina Container
   m_TagString: Untagged
@@ -1351,6 +1380,25 @@ MonoBehaviour:
   m_Spacing: {x: -18, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1724348524626233002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4884210145499805859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9219718b606dc1f49a1b6ed9fcfb23bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaView
+  staminaImages:
+  - {fileID: 2887950985219806090}
+  - {fileID: 5509442280572632184}
+  - {fileID: 5782678546849576929}
+  - {fileID: 709929926564208426}
+  fullStaminaSprite: {fileID: 21300000, guid: 145615aa5a4f1454a87ec125fc3de394, type: 3}
+  emptyStaminaSprite: {fileID: 21300000, guid: 442188a7c54fcfd4290fb6135b0f16b4, type: 3}
 --- !u!1 &4909694516216354436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,7 +2412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 40.942993, y: -24.94104}
+  m_AnchoredPosition: {x: 40.94287, y: -24.94104}
   m_SizeDelta: {x: 81.885, y: 155.005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5855682214508233981

@@ -10,6 +10,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private float dashSpeed = 5f;
     [SerializeField] private TrailRenderer myTrailRenderer;
     [SerializeField] private Transform weaponCollider;
+    [SerializeField] private Transform slashAnimationSpawnPoint;
 
     private PlayerControls playerControls;
     private Vector2 movement;
@@ -60,6 +61,11 @@ public class PlayerController : Singleton<PlayerController>
     public Transform GetWeaponCollider()
     {
         return weaponCollider;
+    }
+
+    public Transform GetSlashAnimationSpawnPoint()
+    {
+        return slashAnimationSpawnPoint;
     }
 
     private void PlayerInput() {

@@ -730,3 +730,5 @@ MonoBehaviour:
   respawnSceneName: Scene_1
   deathAnimationTime: 2
   fadeOutTime: 1
+  dropScatterRadius: 1.5
+  maxDeathCoins: 8

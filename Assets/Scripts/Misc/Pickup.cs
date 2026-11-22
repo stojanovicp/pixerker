@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,19 +19,34 @@ public class Pickup : MonoBehaviour
     [SerializeField] private AnimationCurve animationCurve;
     [SerializeField] private float heightY = 1.5f;
     [SerializeField] private float popDuration = 1f;
-
+    [Tooltip("Half-size of the area a normal drop pops out to (x, y).")]
+    [SerializeField] private Vector2 randomPopRange = new Vector2(2f, 1f);
 
     private Vector3 moveDir;
     private Rigidbody2D rb;
+    private DroppedCoinRecord droppedRecord;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    // Persistent coin (dropped on player death): its amount and landing position come from the record.
+    public void InitializeAsDropped(DroppedCoinRecord record)
+    {
+        droppedRecord = record;
+        amount = record.Amount;
+    }
+
     private void Start()
     {
-        StartCoroutine(AnimCurveSpawnRoutine());
+        Vector2 startPoint = transform.position;
+        Vector2 endPoint = droppedRecord != null ? droppedRecord.Position : GetRandomPopPoint(startPoint);
+
+        if (endPoint != startPoint)
+        {
+            StartCoroutine(ArcMovement.Move(transform, startPoint, endPoint, animationCurve, heightY, popDuration));
+        }
     }
 
     private void Update()
@@ -66,33 +80,21 @@ public class Pickup : MonoBehaviour
         if(collision.gameObject.GetComponent<PlayerController>() && !PlayerHealth.Instance.IsDead)
         {
             Destroy(gameObject);
+
+            if (droppedRecord != null)
+            {
+                WorldState.RemoveDroppedCoin(droppedRecord);
+            }
+
             DetectPickupType();
         }
     }
 
-    private IEnumerator AnimCurveSpawnRoutine()
+    private Vector2 GetRandomPopPoint(Vector2 origin)
     {
-        Vector2 startPoint = transform.position;
-
-        float randomX = transform.position.x + UnityEngine.Random.Range(-2f, 2f);
-        float randomY = transform.position.y + UnityEngine.Random.Range(-1f, 1f);
-
-        Vector2 endPoint = new Vector2(randomX,randomY);
-
-        float timePassed = 0f;
-
-        while(timePassed < popDuration)
-        {
-            timePassed += Time.deltaTime;
-
-            float linearT = timePassed / popDuration;
-            float heightT = animationCurve.Evaluate(linearT);
-            float height = Mathf.Lerp(0f, heightY, heightT);
-
-            transform.position = Vector2.Lerp(startPoint, endPoint, linearT) + new Vector2(0f, height);
-
-            yield return null;
-        }
+        return origin + new Vector2(
+            Random.Range(-randomPopRange.x, randomPopRange.x),
+            Random.Range(-randomPopRange.y, randomPopRange.y));
     }
 
     private void DetectPickupType()

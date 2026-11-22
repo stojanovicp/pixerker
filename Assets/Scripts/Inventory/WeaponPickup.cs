@@ -7,6 +7,11 @@ public class WeaponPickup : MonoBehaviour
     [SerializeField] private WeaponInfo weaponInfo;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [Header("Pop-out arc (dropped weapons spawned away from their landing position)")]
+    [SerializeField] private AnimationCurve popCurve;
+    [SerializeField] private float popHeight = 1.3f;
+    [SerializeField] private float popDuration = 0.4f;
+
     public WeaponInfo WeaponInfo => weaponInfo;
 
     private DroppedWeaponRecord droppedRecord;
@@ -21,6 +26,11 @@ public class WeaponPickup : MonoBehaviour
     private void Start()
     {
         RefreshSprite();
+
+        if (droppedRecord != null && (Vector2)transform.position != droppedRecord.Position)
+        {
+            StartCoroutine(ArcMovement.Move(transform, transform.position, droppedRecord.Position, popCurve, popHeight, popDuration));
+        }
     }
 
     public void InitializeAsDropped(DroppedWeaponRecord record, bool armImmediately)

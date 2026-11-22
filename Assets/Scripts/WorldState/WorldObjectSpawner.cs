@@ -1,71 +1,73 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Recreates runtime world objects (dropped weapons, death piles) from WorldState when their scene loads.
+// Recreates runtime world objects (dropped weapons, dropped coins) from WorldState when their scene loads,
+// and spawns fresh drops at their pop origin so they arc to their recorded position.
 // Lives on the persistent Managers object. It subscribes in Start, not OnEnable: the Managers copy in each
 // newly loaded scene is destroyed before Start runs, so only the persistent spawner ever spawns.
 public class WorldObjectSpawner : MonoBehaviour
 {
     [SerializeField] private WeaponPickup weaponPickupPrefab;
-    [SerializeField] private DeathPile deathPilePrefab;
+    [SerializeField] private Pickup goldCoinPrefab;
 
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         WorldState.DroppedWeaponAdded += OnDroppedWeaponAdded;
-        WorldState.DeathPileAdded += OnDeathPileAdded;
+        WorldState.DroppedCoinAdded += OnDroppedCoinAdded;
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         WorldState.DroppedWeaponAdded -= OnDroppedWeaponAdded;
-        WorldState.DeathPileAdded -= OnDeathPileAdded;
+        WorldState.DroppedCoinAdded -= OnDroppedCoinAdded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         foreach (DroppedWeaponRecord record in WorldState.GetDroppedWeapons(scene.name))
         {
-            SpawnDroppedWeapon(record, scene, true);
+            SpawnDroppedWeapon(record, record.Position, scene, true);
         }
 
-        foreach (DeathPileRecord record in WorldState.GetDeathPiles(scene.name))
+        foreach (DroppedCoinRecord record in WorldState.GetDroppedCoins(scene.name))
         {
-            SpawnDeathPile(record, scene);
+            SpawnDroppedCoin(record, record.Position, scene);
         }
     }
 
-    // A fresh drop lands on the player, so it only arms after the player steps off it.
-    private void OnDroppedWeaponAdded(DroppedWeaponRecord record)
+    // A fresh drop may land on the player, so it only arms after the player steps off it.
+    private void OnDroppedWeaponAdded(DroppedWeaponRecord record, Vector2 popOrigin)
     {
-        Scene activeScene = SceneManager.GetActiveScene();
+        if (!IsInActiveScene(record.SceneName)) { return; }
 
-        if (record.SceneName != activeScene.name) { return; }
-
-        SpawnDroppedWeapon(record, activeScene, false);
+        SpawnDroppedWeapon(record, popOrigin, SceneManager.GetActiveScene(), false);
     }
 
-    private void OnDeathPileAdded(DeathPileRecord record)
+    private void OnDroppedCoinAdded(DroppedCoinRecord record, Vector2 popOrigin)
     {
-        Scene activeScene = SceneManager.GetActiveScene();
+        if (!IsInActiveScene(record.SceneName)) { return; }
 
-        if (record.SceneName != activeScene.name) { return; }
-
-        SpawnDeathPile(record, activeScene);
+        SpawnDroppedCoin(record, popOrigin, SceneManager.GetActiveScene());
     }
 
-    private void SpawnDroppedWeapon(DroppedWeaponRecord record, Scene scene, bool armImmediately)
+    private bool IsInActiveScene(string sceneName)
     {
-        WeaponPickup pickup = Instantiate(weaponPickupPrefab, record.Position, Quaternion.identity);
+        return sceneName == SceneManager.GetActiveScene().name;
+    }
+
+    private void SpawnDroppedWeapon(DroppedWeaponRecord record, Vector2 spawnPosition, Scene scene, bool armImmediately)
+    {
+        WeaponPickup pickup = Instantiate(weaponPickupPrefab, spawnPosition, Quaternion.identity);
         SceneManager.MoveGameObjectToScene(pickup.gameObject, scene);
         pickup.InitializeAsDropped(record, armImmediately);
     }
 
-    private void SpawnDeathPile(DeathPileRecord record, Scene scene)
+    private void SpawnDroppedCoin(DroppedCoinRecord record, Vector2 spawnPosition, Scene scene)
     {
-        DeathPile deathPile = Instantiate(deathPilePrefab, record.Position, Quaternion.identity);
-        SceneManager.MoveGameObjectToScene(deathPile.gameObject, scene);
-        deathPile.Initialize(record);
+        Pickup coin = Instantiate(goldCoinPrefab, spawnPosition, Quaternion.identity);
+        SceneManager.MoveGameObjectToScene(coin.gameObject, scene);
+        coin.InitializeAsDropped(record);
     }
 }

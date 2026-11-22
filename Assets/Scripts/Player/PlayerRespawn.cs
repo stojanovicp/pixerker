@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +8,10 @@ public class PlayerRespawn : MonoBehaviour
     [SerializeField] private string respawnSceneName = "Scene_1";
     [SerializeField] private float deathAnimationTime = 2f;
     [SerializeField] private float fadeOutTime = 1f;
+
+    [Header("Death drops")]
+    [SerializeField] private float dropScatterRadius = 1.5f;
+    [Min(1)] [SerializeField] private int maxDeathCoins = 8;
 
     private PlayerHealth playerHealth;
     private PlayerController playerController;
@@ -32,20 +35,46 @@ public class PlayerRespawn : MonoBehaviour
     private void OnPlayerDied()
     {
         ActiveInventory.Instance.UnequipWeapon();
-        LeaveDeathPile();
+        DropBelongings();
         StartCoroutine(RespawnRoutine());
     }
 
-    // The pile keeps every droppable weapon and half the gold (rounded down); the other half is lost.
-    private void LeaveDeathPile()
+    // Droppable weapons and half the gold (rounded down) scatter around the death position as persistent
+    // pickups; the other half of the gold is lost.
+    private void DropBelongings()
     {
-        List<WeaponInfo> weapons = ActiveInventory.Instance.TakeDroppableWeapons();
-        int pileGold = EconomyManager.Instance.TakeAllGold() / 2;
-
-        if (weapons.Count == 0 && pileGold == 0) { return; }
-
+        Vector2 deathPosition = transform.position;
         string sceneName = SceneManager.GetActiveScene().name;
-        WorldState.AddDeathPile(new DeathPileRecord(sceneName, transform.position, weapons, pileGold));
+
+        foreach (WeaponInfo weaponInfo in ActiveInventory.Instance.TakeDroppableWeapons())
+        {
+            DroppedWeaponRecord record = new DroppedWeaponRecord(sceneName, weaponInfo, GetScatterPoint(deathPosition));
+            WorldState.AddDroppedWeapon(record, deathPosition);
+        }
+
+        DropGold(EconomyManager.Instance.TakeAllGold() / 2, deathPosition, sceneName);
+    }
+
+    // Splits the gold over at most maxDeathCoins coins; the first coins carry the remainder.
+    private void DropGold(int gold, Vector2 deathPosition, string sceneName)
+    {
+        if (gold <= 0) { return; }
+
+        int coinCount = Mathf.Min(maxDeathCoins, gold);
+        int baseAmount = gold / coinCount;
+        int remainder = gold % coinCount;
+
+        for (int i = 0; i < coinCount; i++)
+        {
+            int coinAmount = baseAmount + (i < remainder ? 1 : 0);
+            DroppedCoinRecord record = new DroppedCoinRecord(sceneName, GetScatterPoint(deathPosition), coinAmount);
+            WorldState.AddDroppedCoin(record, deathPosition);
+        }
+    }
+
+    private Vector2 GetScatterPoint(Vector2 center)
+    {
+        return center + Random.insideUnitCircle * dropScatterRadius;
     }
 
     private IEnumerator RespawnRoutine()

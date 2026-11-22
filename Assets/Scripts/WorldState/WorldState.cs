@@ -5,19 +5,20 @@ using UnityEngine;
 // In-memory world state for one play session, keyed by scene name. Nothing is saved to disk.
 public static class WorldState
 {
-    public static event Action<DroppedWeaponRecord> DroppedWeaponAdded;
-    public static event Action<DeathPileRecord> DeathPileAdded;
+    // The Vector2 is where a freshly dropped item pops out from; it arcs from there to the record's position.
+    public static event Action<DroppedWeaponRecord, Vector2> DroppedWeaponAdded;
+    public static event Action<DroppedCoinRecord, Vector2> DroppedCoinAdded;
 
     private static readonly Dictionary<string, HashSet<string>> removedObjectIds = new Dictionary<string, HashSet<string>>();
     private static readonly Dictionary<string, List<DroppedWeaponRecord>> droppedWeapons = new Dictionary<string, List<DroppedWeaponRecord>>();
-    private static readonly Dictionary<string, List<DeathPileRecord>> deathPiles = new Dictionary<string, List<DeathPileRecord>>();
+    private static readonly Dictionary<string, List<DroppedCoinRecord>> droppedCoins = new Dictionary<string, List<DroppedCoinRecord>>();
 
     // Also covers Play Mode without domain reload, where static fields would otherwise survive.
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void ResetOnPlay()
     {
         DroppedWeaponAdded = null;
-        DeathPileAdded = null;
+        DroppedCoinAdded = null;
         Reset();
     }
 
@@ -25,7 +26,7 @@ public static class WorldState
     {
         removedObjectIds.Clear();
         droppedWeapons.Clear();
-        deathPiles.Clear();
+        droppedCoins.Clear();
     }
 
     public static bool IsRemoved(string sceneName, string objectId)
@@ -40,41 +41,44 @@ public static class WorldState
 
     public static IReadOnlyList<DroppedWeaponRecord> GetDroppedWeapons(string sceneName)
     {
-        return droppedWeapons.TryGetValue(sceneName, out List<DroppedWeaponRecord> records)
-            ? records
-            : Array.Empty<DroppedWeaponRecord>();
+        return GetRecords(droppedWeapons, sceneName);
     }
 
-    public static void AddDroppedWeapon(DroppedWeaponRecord record)
+    public static void AddDroppedWeapon(DroppedWeaponRecord record, Vector2 popOrigin)
     {
         GetOrCreate(droppedWeapons, record.SceneName).Add(record);
-        DroppedWeaponAdded?.Invoke(record);
+        DroppedWeaponAdded?.Invoke(record, popOrigin);
     }
 
     public static void RemoveDroppedWeapon(DroppedWeaponRecord record)
     {
-        if (droppedWeapons.TryGetValue(record.SceneName, out List<DroppedWeaponRecord> records))
-        {
-            records.Remove(record);
-        }
+        RemoveRecord(droppedWeapons, record.SceneName, record);
     }
 
-    public static IReadOnlyList<DeathPileRecord> GetDeathPiles(string sceneName)
+    public static IReadOnlyList<DroppedCoinRecord> GetDroppedCoins(string sceneName)
     {
-        return deathPiles.TryGetValue(sceneName, out List<DeathPileRecord> records)
-            ? records
-            : Array.Empty<DeathPileRecord>();
+        return GetRecords(droppedCoins, sceneName);
     }
 
-    public static void AddDeathPile(DeathPileRecord record)
+    public static void AddDroppedCoin(DroppedCoinRecord record, Vector2 popOrigin)
     {
-        GetOrCreate(deathPiles, record.SceneName).Add(record);
-        DeathPileAdded?.Invoke(record);
+        GetOrCreate(droppedCoins, record.SceneName).Add(record);
+        DroppedCoinAdded?.Invoke(record, popOrigin);
     }
 
-    public static void RemoveDeathPile(DeathPileRecord record)
+    public static void RemoveDroppedCoin(DroppedCoinRecord record)
     {
-        if (deathPiles.TryGetValue(record.SceneName, out List<DeathPileRecord> records))
+        RemoveRecord(droppedCoins, record.SceneName, record);
+    }
+
+    private static IReadOnlyList<TRecord> GetRecords<TRecord>(Dictionary<string, List<TRecord>> recordsByScene, string sceneName)
+    {
+        return recordsByScene.TryGetValue(sceneName, out List<TRecord> records) ? records : Array.Empty<TRecord>();
+    }
+
+    private static void RemoveRecord<TRecord>(Dictionary<string, List<TRecord>> recordsByScene, string sceneName, TRecord record)
+    {
+        if (recordsByScene.TryGetValue(sceneName, out List<TRecord> records))
         {
             records.Remove(record);
         }

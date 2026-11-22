@@ -7,4 +7,8 @@ public class SceneManagement : Singleton<SceneManagement>
     public void SetTransitionName(string sceneTransitionName) {
         this.SceneTransitionName = sceneTransitionName;
     }
+
+    public void ClearTransitionName() {
+        SceneTransitionName = null;
+    }
 }

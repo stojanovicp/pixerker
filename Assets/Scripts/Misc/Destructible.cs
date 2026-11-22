@@ -5,7 +5,7 @@ public class Destructible : MonoBehaviour
     [SerializeField] private GameObject destroyVFX;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<DamageSource>() || other.gameObject.GetComponent<Projectile>()) {
+        if (other.gameObject.GetComponent<DamageSource>()) {
             PickupSpawner pickupSpawner = GetComponent<PickupSpawner>();
             if (pickupSpawner != null) pickupSpawner.DropItems();
             

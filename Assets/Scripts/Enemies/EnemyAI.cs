@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -33,6 +31,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerController.Instance == null) { return; }
+
         MovementStateControl();
     }
 

@@ -14,6 +14,12 @@ public class FallingProjectile : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerController.Instance == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         GameObject grapeShadow = Instantiate(grapeProjectileShadow, transform.position + new Vector3(0, -0.3f, 0), Quaternion.identity);
 
         Vector3 playerPos = PlayerController.Instance.transform.position;

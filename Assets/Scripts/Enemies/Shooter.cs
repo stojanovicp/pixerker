@@ -39,6 +39,8 @@ public class Shooter : MonoBehaviour, IEnemy
 
     private IEnumerator ShootRoutine()
     {
+        if (PlayerController.Instance == null) { yield break; }
+
         isShooting = true;
 
         float startAngle, currentAngle, angleStep, endAngle;
@@ -50,6 +52,8 @@ public class Shooter : MonoBehaviour, IEnemy
 
         for (int i = 0; i < burstCount; i++)
         {
+            if (PlayerController.Instance == null) { break; }
+
             if(!oscilate)
             {
                 TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
@@ -102,7 +106,7 @@ public class Shooter : MonoBehaviour, IEnemy
         currentAngle = targetAngle;
         float halfAngleSpread = 0f;
         angleStep = 0;
-        if (angleSpread != 0)
+        if (angleSpread != 0 && projectilesPerBurst > 1)
         {
             angleStep = angleSpread / (projectilesPerBurst - 1);
             halfAngleSpread = angleSpread / 2;

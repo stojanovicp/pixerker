@@ -46,14 +46,12 @@ public class PlayerHealth : Singleton<PlayerHealth>
         }
     }
 
-    public void HealPlayer(int healRate)
+    public void HealPlayer(int healAmount)
     {
-        if(currentHealth < maxHealth)
-        {
-            currentHealth += healRate;
-            UpdateHealthSlider();
-        }
+        if(IsDead) { return; }
 
+        currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
+        UpdateHealthSlider();
     }
 
     private void CheckIfPlayerDeath()
@@ -73,6 +71,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
         Stamina.Instance.ReplenishStaminaOnDeath();
+        SceneManagement.Instance.ClearTransitionName();
         SceneManager.LoadScene(RESPAWN);
     }
 

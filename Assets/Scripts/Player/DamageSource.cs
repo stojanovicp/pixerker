@@ -3,15 +3,23 @@ using UnityEngine;
 public class DamageSource : MonoBehaviour
 {
     private int damageAmount;
+    private float knockbackForce;
+    private bool isInitialized;
 
-    void Start()
+    public void Initialize(WeaponInfo weaponInfo)
     {
-        MonoBehaviour currentActiveWeapon = ActiveWeapon.Instance.CurrentActiveWeapon;
-        damageAmount = (currentActiveWeapon as IWeapon).GetWeaponInfo().weaponDamage;
+        damageAmount = weaponInfo.weaponDamage;
+        knockbackForce = weaponInfo.knockbackForce;
+        isInitialized = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
-        enemyHealth?.TakeDamage(damageAmount);
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!isInitialized) { return; }
+
+        if (other.TryGetComponent(out IDamageable damageable))
+        {
+            damageable.TakeDamage(new DamageInfo(damageAmount, knockbackForce, transform.position, DamageFlags.None));
+        }
     }
 }

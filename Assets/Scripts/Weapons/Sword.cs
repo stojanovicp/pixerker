@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections;
 
 public class Sword : MonoBehaviour, IWeapon
 {
@@ -9,6 +7,7 @@ public class Sword : MonoBehaviour, IWeapon
     [SerializeField] private WeaponInfo weaponInfo;
 
     private Transform weaponCollider;
+    private DamageSource weaponDamageSource;
     private Animator myAnimator;
     private GameObject slashAnim;
 
@@ -19,6 +18,7 @@ public class Sword : MonoBehaviour, IWeapon
     private void Start()
     {
         weaponCollider = PlayerController.Instance.GetWeaponCollider();
+        weaponDamageSource = weaponCollider.GetComponent<DamageSource>();
         slashAnimSpawnPoint = GameObject.Find("SlashAnimationSpawnPoint").transform;
     }
 
@@ -33,6 +33,7 @@ public class Sword : MonoBehaviour, IWeapon
 
     public void Attack() {
         myAnimator.SetTrigger("Attack");
+        weaponDamageSource.Initialize(weaponInfo);
         weaponCollider.gameObject.SetActive(true);
         slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
         slashAnim.transform.parent = this.transform.parent;

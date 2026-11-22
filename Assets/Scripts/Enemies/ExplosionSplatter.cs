@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class ExplosionSplatter : MonoBehaviour
 {
+    [SerializeField] private int damage = 1;
+    [SerializeField] private float colliderActiveTime = 0.15f;
+
     private SpriteFade spriteFade;
 
     private void Awake()
@@ -13,13 +16,13 @@ public class ExplosionSplatter : MonoBehaviour
     {
         StartCoroutine(spriteFade.SlowFadeRoutine());
 
-        Invoke("DisableCollider", 0.15f);
+        Invoke(nameof(DisableCollider), colliderActiveTime);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-        if (playerHealth) playerHealth.TakeDamage(1, transform);
+        if (playerHealth) playerHealth.TakeDamage(damage, transform);
     }
 
     private void DisableCollider()

@@ -85,7 +85,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         currentHealth -= damage;
 
 
-        knockback.GetKnockedBack(hitTransform, knockbackForce);
+        knockback.GetKnockedBack(hitTransform.position, knockbackForce);
         StartCoroutine(flash.FlashRoutine());
 
         StartCoroutine(DamageRecoveryRoutine());

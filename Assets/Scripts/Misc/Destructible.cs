@@ -1,16 +1,21 @@
 using UnityEngine;
 
-public class Destructible : MonoBehaviour
+public class Destructible : MonoBehaviour, IDamageable
 {
     [SerializeField] private GameObject destroyVFX;
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<DamageSource>()) {
-            PickupSpawner pickupSpawner = GetComponent<PickupSpawner>();
-            if (pickupSpawner != null) pickupSpawner.DropItems();
-            
-            Instantiate(destroyVFX, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+    private bool isDestroyed;
+
+    public void TakeDamage(DamageInfo damage) {
+        if (isDestroyed) { return; }
+
+        isDestroyed = true;
+
+        if (TryGetComponent(out PickupSpawner pickupSpawner)) {
+            pickupSpawner.DropItems();
         }
+
+        Instantiate(destroyVFX, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

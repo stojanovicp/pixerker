@@ -1,11 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private int startingHealth = 3;
     [SerializeField] private GameObject deathVFXPrefab;
-    [SerializeField] private float knockBackThrust = 15f;
 
     private int currentHealth;
     private bool isDead;
@@ -21,11 +20,9 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = startingHealth;
     }
 
-    public void TakeDamage(int damage) {
-        currentHealth -= damage;
-        if (PlayerController.Instance != null) {
-            knockback.GetKnockedBack(PlayerController.Instance.transform, knockBackThrust);
-        }
+    public void TakeDamage(DamageInfo damage) {
+        currentHealth -= damage.Amount;
+        knockback.GetKnockedBack(damage.SourcePosition, damage.KnockbackForce);
         StartCoroutine(flash.FlashRoutine());
         StartCoroutine(CheckDetectDeathRoutine());
     }

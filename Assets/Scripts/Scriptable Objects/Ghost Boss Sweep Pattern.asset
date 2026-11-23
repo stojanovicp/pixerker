@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Ghost Boss Sweep Pattern
   m_EditorClassIdentifier: Assembly-CSharp::AttackPattern
   burstCount: 12
-  projectilesPerBurst: 14
+  minProjectilesPerBurst: 14
+  maxProjectilesPerBurst: 14
   timeBetweenProjectiles: 0.035714287
   timeBetweenBursts: 0
   restTime: 0.1

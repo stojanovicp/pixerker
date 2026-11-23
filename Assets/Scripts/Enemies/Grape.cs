@@ -38,7 +38,7 @@ public class Grape : MonoBehaviour, IEnemy
         StartCoroutine(AttackPatternRunner.Run(attackPattern, AimVolley, ThrowGrape));
     }
 
-    private void AimVolley(int burstIndex)
+    private void AimVolley(int burstIndex, int projectileCount)
     {
         volleyTarget = PlayerController.Instance.transform.position;
     }

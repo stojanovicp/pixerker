@@ -17,7 +17,7 @@ MonoBehaviour:
   contactDamage: 10
   detectionRange: 9
   loseRange: 12
-  attackRange: 6
-  stoppingDistance: 4
-  attackCooldown: 2.1
+  attackRange: 8
+  stoppingDistance: 7
+  attackCooldown: 2
   roamDirectionChangeTime: 2

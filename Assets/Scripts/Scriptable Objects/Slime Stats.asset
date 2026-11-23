@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b730fed57cd7b97ea113b060f6735ee, type: 3}
   m_Name: Slime Stats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  maxHealth: 30
-  moveSpeed: 1
-  contactDamage: 10
-  detectionRange: 6
-  loseRange: 9
+  maxHealth: 40
+  moveSpeed: 1.5
+  contactDamage: 15
+  detectionRange: 10
+  loseRange: 13
   attackRange: 0
   stoppingDistance: 0
   attackCooldown: 2

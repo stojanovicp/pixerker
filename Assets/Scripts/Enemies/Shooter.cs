@@ -8,8 +8,9 @@ public class Shooter : MonoBehaviour, IEnemy
     [SerializeField] private AttackPattern attackPattern;
 
     private bool isShooting;
-    private float burstStartAngle;
-    private float angleStep;
+    private float sweepFromAngle;
+    private float sweepToAngle;
+    private int burstProjectileCount;
 
     private void Awake()
     {
@@ -34,14 +35,17 @@ public class Shooter : MonoBehaviour, IEnemy
         isShooting = false;
     }
 
-    private void BeginBurst(int burstIndex)
+    // Even bursts (or every burst without oscillate) re-aim the cone at the player and sweep it from one
+    // edge to the other; odd bursts with oscillate sweep the previous cone back the other way.
+    private void BeginBurst(int burstIndex, int projectileCount)
     {
+        burstProjectileCount = projectileCount;
+
         bool sweepsBack = attackPattern.oscillate && burstIndex % 2 == 1;
 
         if (sweepsBack)
         {
-            burstStartAngle += angleStep * (attackPattern.projectilesPerBurst - 1);
-            angleStep = -angleStep;
+            (sweepFromAngle, sweepToAngle) = (sweepToAngle, sweepFromAngle);
             return;
         }
 
@@ -52,22 +56,17 @@ public class Shooter : MonoBehaviour, IEnemy
     {
         Vector2 directionToPlayer = PlayerController.Instance.transform.position - transform.position;
         float angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+        float halfSpread = attackPattern.angleSpread / 2f;
 
-        if (attackPattern.angleSpread > 0f && attackPattern.projectilesPerBurst > 1)
-        {
-            angleStep = attackPattern.angleSpread / (attackPattern.projectilesPerBurst - 1);
-            burstStartAngle = angleToPlayer - attackPattern.angleSpread / 2f;
-        }
-        else
-        {
-            angleStep = 0f;
-            burstStartAngle = angleToPlayer;
-        }
+        sweepFromAngle = angleToPlayer - halfSpread;
+        sweepToAngle = angleToPlayer + halfSpread;
     }
 
+    // A single projectile goes through the middle of the cone, i.e. straight at the player.
     private void FireBullet(int projectileIndex)
     {
-        float angle = (burstStartAngle + angleStep * projectileIndex) * Mathf.Deg2Rad;
+        float sweepProgress = burstProjectileCount > 1 ? (float)projectileIndex / (burstProjectileCount - 1) : 0.5f;
+        float angle = Mathf.Lerp(sweepFromAngle, sweepToAngle, sweepProgress) * Mathf.Deg2Rad;
         Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         Vector2 spawnPosition = (Vector2)transform.position + direction * attackPattern.spawnDistance;
 

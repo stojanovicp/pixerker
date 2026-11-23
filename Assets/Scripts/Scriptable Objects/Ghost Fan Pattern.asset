@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Ghost Fan Pattern
   m_EditorClassIdentifier: Assembly-CSharp::AttackPattern
   burstCount: 1
-  projectilesPerBurst: 3
+  minProjectilesPerBurst: 5
+  maxProjectilesPerBurst: 5
   timeBetweenProjectiles: 0
   timeBetweenBursts: 0
   restTime: 0
-  angleSpread: 30
+  angleSpread: 35
   oscillate: 0
   spawnDistance: 0.3
   projectileSpeed: 6

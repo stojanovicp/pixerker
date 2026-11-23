@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18de2c745e50437b4f31b58d44095b1f, type: 3}
   m_Name: Red Ghost Rifle Pattern
   m_EditorClassIdentifier: Assembly-CSharp::AttackPattern
-  burstCount: 5
-  projectilesPerBurst: 1
+  burstCount: 7
+  minProjectilesPerBurst: 1
+  maxProjectilesPerBurst: 1
   timeBetweenProjectiles: 0
   timeBetweenBursts: 0.12
   restTime: 0

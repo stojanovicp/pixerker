@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 // Burst and timing data shared by enemy attackers (Shooter fires aimed bullets, Grape lobs projectiles).
 [CreateAssetMenu(menuName = "Attack Pattern")]
@@ -6,7 +7,10 @@ public class AttackPattern : ScriptableObject
 {
     [Header("Bursts (all attackers)")]
     [Min(1)] public int burstCount = 1;
-    [Min(1)] public int projectilesPerBurst = 1;
+    [Tooltip("Each burst fires a random number of projectiles between min and max (inclusive).")]
+    [FormerlySerializedAs("projectilesPerBurst")]
+    [Min(1)] public int minProjectilesPerBurst = 1;
+    [Min(1)] public int maxProjectilesPerBurst = 1;
     [Tooltip("Delay after each projectile. 0 fires the whole burst at once.")]
     [Min(0f)] public float timeBetweenProjectiles = 0f;
     [Tooltip("Extra delay after each burst.")]
@@ -27,4 +31,14 @@ public class AttackPattern : ScriptableObject
     [Header("Lobbed projectiles (Grape)")]
     [Tooltip("The first projectile of a burst lands on the target; the others land within this radius of it.")]
     [Min(0f)] public float targetScatterRadius = 0f;
+
+    private void OnValidate()
+    {
+        maxProjectilesPerBurst = Mathf.Max(maxProjectilesPerBurst, minProjectilesPerBurst);
+    }
+
+    public int RollProjectileCount()
+    {
+        return Random.Range(minProjectilesPerBurst, Mathf.Max(minProjectilesPerBurst, maxProjectilesPerBurst) + 1);
+    }
 }

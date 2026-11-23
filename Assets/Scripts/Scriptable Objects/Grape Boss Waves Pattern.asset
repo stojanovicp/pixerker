@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18de2c745e50437b4f31b58d44095b1f, type: 3}
+  m_Name: Grape Boss Waves Pattern
+  m_EditorClassIdentifier: Assembly-CSharp::AttackPattern
+  burstCount: 2
+  minProjectilesPerBurst: 5
+  maxProjectilesPerBurst: 5
+  timeBetweenProjectiles: 0.12
+  timeBetweenBursts: 0.6
+  restTime: 0
+  angleSpread: 0
+  oscillate: 0
+  spawnDistance: 1
+  projectileSpeed: 7
+  projectileDamage: 15
+  targetScatterRadius: 2.5

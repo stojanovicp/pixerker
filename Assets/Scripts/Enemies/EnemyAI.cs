@@ -23,11 +23,13 @@ public class EnemyAI : MonoBehaviour
     private EnemyPathfinding enemyPathfinding;
     private IEnemy attack;
     private float nextAttackTime;
+    private float attackCooldown;
 
     private void Awake()
     {
         enemyPathfinding = GetComponent<EnemyPathfinding>();
         attack = enemyType as IEnemy;
+        attackCooldown = stats.attackCooldown;
 
         if (stats.attackRange > 0f && attack == null)
         {
@@ -47,6 +49,12 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         stateMachine.Tick();
+    }
+
+    // 0 or less restores the cooldown from EnemyStats (bosses attack faster in phase two).
+    public void SetAttackCooldown(float cooldown)
+    {
+        attackCooldown = cooldown > 0f ? cooldown : stats.attackCooldown;
     }
 
     public void ChangeState(IState nextState)
@@ -82,7 +90,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (!CanAttack || Time.time < nextAttackTime) { return; }
 
-        nextAttackTime = Time.time + stats.attackCooldown;
+        nextAttackTime = Time.time + attackCooldown;
         attack.Attack();
     }
 

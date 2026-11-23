@@ -24,6 +24,8 @@ public class Boss : MonoBehaviour, IEnemy
         public List<PhaseAttack> attacks = new List<PhaseAttack>();
         [Tooltip("0 keeps the speed from EnemyStats.")]
         [Min(0f)] public float moveSpeed;
+        [Tooltip("0 keeps the attack cooldown from EnemyStats.")]
+        [Min(0f)] public float attackCooldown;
         [Tooltip("Seconds between summon waves (random between x and y).")]
         public Vector2 summonInterval = new Vector2(10f, 15f);
     }
@@ -40,6 +42,9 @@ public class Boss : MonoBehaviour, IEnemy
     public static event Action<Boss> Engaged;
     public static event Action<Boss> Disengaged;
 
+    // Raised when a boss marked as the final boss dies: the game is won.
+    public static event Action FinalBossDefeated;
+
     [SerializeField] private string displayName = "Boss";
     [SerializeField] private Phase phaseOne = new Phase();
     [SerializeField] private Phase phaseTwo = new Phase();
@@ -53,6 +58,8 @@ public class Boss : MonoBehaviour, IEnemy
 
     [Header("Reward")]
     [SerializeField] private WeaponInfo droppedWeapon;
+    [Tooltip("Killing this boss wins the game.")]
+    [SerializeField] private bool isFinalBoss;
 
     public string DisplayName => displayName;
     public EnemyHealth Health => health;
@@ -135,6 +142,7 @@ public class Boss : MonoBehaviour, IEnemy
     {
         currentPhase = phase;
         pathfinding.SetMoveSpeed(phase.moveSpeed);
+        enemyAI.SetAttackCooldown(phase.attackCooldown);
     }
 
     private void ScheduleNextSummon()
@@ -181,6 +189,11 @@ public class Boss : MonoBehaviour, IEnemy
         foreach (EnemyHealth summon in aliveSummons)
         {
             if (summon != null) { summon.Kill(); }
+        }
+
+        if (isFinalBoss)
+        {
+            FinalBossDefeated?.Invoke();
         }
     }
 

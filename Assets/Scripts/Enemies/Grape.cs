@@ -38,8 +38,16 @@ public class Grape : MonoBehaviour, IEnemy, IPatternAttacker
         if (!enabled || pattern == null) { return; }
 
         currentPattern = pattern;
-        myAnimator.SetTrigger(ATTACK_HASH);
         spriteRenderer.flipX = transform.position.x > PlayerController.Instance.transform.position.x;
+
+        // Without an attack animation (e.g. the Black Ghost) the volley starts at once instead of on the anim event.
+        if (myAnimator == null)
+        {
+            SpawnProjectileAnimEvent();
+            return;
+        }
+
+        myAnimator.SetTrigger(ATTACK_HASH);
     }
 
     public void SpawnProjectileAnimEvent()

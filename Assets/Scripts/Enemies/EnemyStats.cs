@@ -6,6 +6,8 @@ public class EnemyStats : ScriptableObject
     public int maxHealth = 3;
     public float moveSpeed = 1f;
     public int contactDamage = 1;
+    [Tooltip("Bosses take only a share of their max HP from Execute hits.")]
+    public bool isBoss;
 
     [Header("Ranges")]
     public float detectionRange = 6f;

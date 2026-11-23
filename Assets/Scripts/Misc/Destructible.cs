@@ -6,8 +6,9 @@ public class Destructible : MonoBehaviour, IDamageable
 
     private bool isDestroyed;
 
-    public void TakeDamage(DamageInfo damage) {
-        if (isDestroyed) { return; }
+    // Bushes have no health: they break on any hit and report no damage dealt (so no life steal).
+    public int TakeDamage(DamageInfo damage) {
+        if (isDestroyed) { return 0; }
 
         isDestroyed = true;
 
@@ -21,5 +22,6 @@ public class Destructible : MonoBehaviour, IDamageable
 
         Instantiate(destroyVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        return 0;
     }
 }

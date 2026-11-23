@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
+    // Share of a boss's max HP taken by an Execute hit (normal enemies lose all remaining HP).
+    private const float BOSS_EXECUTE_FRACTION = 0.05f;
+
     [SerializeField] private EnemyStats stats;
     [SerializeField] private GameObject deathVFXPrefab;
 
@@ -20,11 +23,21 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         currentHealth = stats.maxHealth;
     }
 
-    public void TakeDamage(DamageInfo damage) {
-        currentHealth -= damage.Amount;
+    public int TakeDamage(DamageInfo damage) {
+        int remainingHealth = Mathf.Max(currentHealth, 0);
+        bool isExecute = (damage.Flags & DamageFlags.Execute) != 0;
+        int damageAmount = isExecute ? GetExecuteDamage(remainingHealth) : damage.Amount;
+
+        currentHealth -= damageAmount;
         knockback.GetKnockedBack(damage.SourcePosition, damage.KnockbackForce);
         StartCoroutine(flash.FlashRoutine());
         StartCoroutine(CheckDetectDeathRoutine());
+
+        return Mathf.Min(damageAmount, remainingHealth);
+    }
+
+    private int GetExecuteDamage(int remainingHealth) {
+        return stats.isBoss ? Mathf.CeilToInt(stats.maxHealth * BOSS_EXECUTE_FRACTION) : remainingHealth;
     }
 
     private IEnumerator CheckDetectDeathRoutine() {

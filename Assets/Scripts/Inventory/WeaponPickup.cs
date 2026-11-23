@@ -20,10 +20,22 @@ public class WeaponPickup : MonoBehaviour
     private bool isArmed = true;
     private bool isCollected;
 
+#if UNITY_EDITOR
+    // Editor preview of the icon. Setting a sprite inside OnValidate makes Unity warn
+    // ("SendMessage cannot be called during ... OnValidate"), so the refresh runs one editor tick later.
     private void OnValidate()
     {
+        UnityEditor.EditorApplication.delayCall -= RefreshSpriteInEditor;
+        UnityEditor.EditorApplication.delayCall += RefreshSpriteInEditor;
+    }
+
+    private void RefreshSpriteInEditor()
+    {
+        if (this == null) { return; }
+
         RefreshSprite();
     }
+#endif
 
     private void Start()
     {

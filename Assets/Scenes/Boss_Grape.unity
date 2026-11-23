@@ -23859,6 +23859,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5923646063368403949, guid: 91c074e5d9b66fd4ba1f6463c919caf8, type: 3}
   m_PrefabInstance: {fileID: 1675403786}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1678302010
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5726849495441207558, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.928918
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726849495441207558, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.31568375
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726849495441207558, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.095324546
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726849495441207558, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726849495441207558, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726849495441207558, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726849495441207558, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726849495441207558, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726849495441207558, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726849495441207558, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623932947740149272, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
+      propertyPath: m_Name
+      value: Grape Boss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c8e6dffb8bf9bac4f884fe0ef5abe022, type: 3}
 --- !u!4 &1688961291 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6806683901032607999, guid: ea3dd7905e7b0af4aa6f775af9809c31, type: 3}
@@ -30809,3 +30866,4 @@ SceneRoots:
   - {fileID: 1284457100}
   - {fileID: 92319502}
   - {fileID: 1018218748}
+  - {fileID: 1678302010}

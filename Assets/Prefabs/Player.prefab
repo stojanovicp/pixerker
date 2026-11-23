@@ -597,6 +597,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   dashSpeed: 6
+  dashDuration: 0.2
+  dashCooldown: 0.25
   myTrailRenderer: {fileID: 7994755071143401708}
   weaponCollider: {fileID: 7977770855409978995}
   slashAnimationSpawnPoint: {fileID: 872685357667449319}
@@ -714,7 +716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Stamina
   maxStamina: 4
-  timeBetweenRefresh: 3
+  timeBetweenRefresh: 2
 --- !u!114 &1005524355442774868
 MonoBehaviour:
   m_ObjectHideFlags: 0

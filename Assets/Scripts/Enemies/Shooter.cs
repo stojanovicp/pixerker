@@ -1,129 +1,82 @@
 using System.Collections;
 using UnityEngine;
 
+// Fires bullets in a cone centred on the player, following an AttackPattern.
 public class Shooter : MonoBehaviour, IEnemy
 {
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float bulletMoveSpeed;
-    [SerializeField] private int burstCount;
-    [SerializeField] private int projectilesPerBurst;
-    [SerializeField][Range(0,359)] private float angleSpread;
-    [SerializeField] private float startingDistance = 0.1f;
-    [SerializeField] private float timeBetweenBursts;
-    [SerializeField] private float restTime = 1f;
-    [SerializeField] private bool stagger;
-    [Tooltip("Stagger has to be enabled for oscillate to work properly.")] 
-    [SerializeField] private bool oscilate;
-    
-    private bool isShooting = false;
+    [SerializeField] private AttackPattern attackPattern;
 
-    private void OnValidate()
+    private bool isShooting;
+    private float burstStartAngle;
+    private float angleStep;
+
+    private void Awake()
     {
-        if(oscilate) { stagger = true; }
-        if(!oscilate) { stagger = false; }
-        if(projectilesPerBurst < 1) { projectilesPerBurst = 1; }
-        if(burstCount < 1) { burstCount = 1; }
-        if(timeBetweenBursts < 0.1f) { timeBetweenBursts = 0.1f; }
-        if(restTime < 0.1f) { restTime = 0.1f; }
-        if(startingDistance < 0.1f) { startingDistance = 0.1f; }
-        if(angleSpread == 0) { projectilesPerBurst = 1; }
-        if(bulletMoveSpeed <= 0) { bulletMoveSpeed = 0.1f; }
+        if (bulletPrefab == null || attackPattern == null)
+        {
+            Debug.LogError($"{nameof(Shooter)} on '{name}': assign Bullet Prefab and Attack Pattern.", this);
+            enabled = false;
+        }
     }
+
     public void Attack()
     {
-        if(!isShooting)
-        {
-            StartCoroutine(ShootRoutine());
-        }
+        if (!enabled || isShooting) { return; }
+
+        StartCoroutine(ShootRoutine());
     }
 
     private IEnumerator ShootRoutine()
     {
-        if (PlayerHealth.Instance.IsDead) { yield break; }
-
         isShooting = true;
-
-        float startAngle, currentAngle, angleStep, endAngle;
-        float timeBetweenProjectiles = 0f;
-
-        TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
-
-        if(stagger) { timeBetweenProjectiles = timeBetweenBursts / projectilesPerBurst; }
-
-        for (int i = 0; i < burstCount; i++)
-        {
-            if (PlayerHealth.Instance.IsDead) { break; }
-
-            if(!oscilate)
-            {
-                TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
-            }
-
-            if(oscilate && i % 2 != 1)
-            {
-                TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
-            }
-            else if(oscilate)
-            {
-                currentAngle = endAngle;
-                endAngle = startAngle;
-                startAngle = currentAngle;
-                angleStep = -angleStep;
-            }
-
-            for (int j = 0; j < projectilesPerBurst; j++)
-            {
-                Vector2 pos = FindBulletSpawnPos(currentAngle);
-
-                GameObject newBullet = Instantiate(bulletPrefab, pos, Quaternion.identity);
-                newBullet.transform.right = newBullet.transform.position - transform.position;
-
-                if (newBullet.TryGetComponent(out Projectile projectile))
-                {
-                    projectile.UpdateMoveSpeed(bulletMoveSpeed);
-                }
-
-                currentAngle += angleStep;
-
-                if(stagger) { yield return new WaitForSeconds(timeBetweenProjectiles); }
-            }
-
-            currentAngle = startAngle;
-
-            if(!stagger) { yield return new WaitForSeconds(timeBetweenBursts); }
-        }
-
-        yield return new WaitForSeconds(restTime);
+        yield return AttackPatternRunner.Run(attackPattern, BeginBurst, FireBullet);
         isShooting = false;
     }
 
-    private void TargetConeOfInfluence(out float startAngle, out float currentAngle, out float angleStep, out float endAngle)
+    private void BeginBurst(int burstIndex)
     {
-        Vector2 targetDirection = PlayerController.Instance.transform.position - transform.position;
-        float targetAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-        startAngle = targetAngle;
-        endAngle = targetAngle;
-        currentAngle = targetAngle;
-        float halfAngleSpread = 0f;
-        angleStep = 0;
-        if (angleSpread != 0 && projectilesPerBurst > 1)
+        bool sweepsBack = attackPattern.oscillate && burstIndex % 2 == 1;
+
+        if (sweepsBack)
         {
-            angleStep = angleSpread / (projectilesPerBurst - 1);
-            halfAngleSpread = angleSpread / 2;
-            startAngle = targetAngle - halfAngleSpread;
-            endAngle = targetAngle + halfAngleSpread;
-            currentAngle = startAngle;
+            burstStartAngle += angleStep * (attackPattern.projectilesPerBurst - 1);
+            angleStep = -angleStep;
+            return;
+        }
+
+        AimConeAtPlayer();
+    }
+
+    private void AimConeAtPlayer()
+    {
+        Vector2 directionToPlayer = PlayerController.Instance.transform.position - transform.position;
+        float angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+
+        if (attackPattern.angleSpread > 0f && attackPattern.projectilesPerBurst > 1)
+        {
+            angleStep = attackPattern.angleSpread / (attackPattern.projectilesPerBurst - 1);
+            burstStartAngle = angleToPlayer - attackPattern.angleSpread / 2f;
+        }
+        else
+        {
+            angleStep = 0f;
+            burstStartAngle = angleToPlayer;
         }
     }
 
-    private Vector2 FindBulletSpawnPos(float currentAngle)
+    private void FireBullet(int projectileIndex)
     {
-        float x = transform.position.x + startingDistance * Mathf.Cos(currentAngle * Mathf.Deg2Rad);
-        float y = transform.position.y + startingDistance * Mathf.Sin(currentAngle * Mathf.Deg2Rad);
-        
+        float angle = (burstStartAngle + angleStep * projectileIndex) * Mathf.Deg2Rad;
+        Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+        Vector2 spawnPosition = (Vector2)transform.position + direction * attackPattern.spawnDistance;
 
-        Vector2 pos = new Vector2(x, y);
+        GameObject newBullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+        newBullet.transform.right = direction;
 
-        return pos;
+        if (newBullet.TryGetComponent(out Projectile projectile))
+        {
+            projectile.UpdateMoveSpeed(attackPattern.projectileSpeed);
+        }
     }
 }

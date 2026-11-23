@@ -284,7 +284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70364d93464d2b641a593439530db969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grape
-  grapeProjectilePrefab: {fileID: 8125756364515265874, guid: 895ba490fcdab34459850b53b4c99480, type: 3}
+  grapeProjectilePrefab: {fileID: 1689206371908497178, guid: 895ba490fcdab34459850b53b4c99480, type: 3}
+  attackPattern: {fileID: 11400000, guid: 0b50bd5e915ab27ce01fae940c277320, type: 2}
 --- !u!210 &4785630803412706668
 SortingGroup:
   m_ObjectHideFlags: 0

@@ -248,15 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooter
   bulletPrefab: {fileID: 5703028919142120387, guid: 7a7c5770e1d642b428070295b12e8622, type: 3}
-  bulletMoveSpeed: 7
-  burstCount: 12
-  projectilesPerBurst: 14
-  angleSpread: 82
-  startingDistance: 0.3
-  timeBetweenBursts: 0.5
-  restTime: 0.1
-  stagger: 1
-  oscilate: 1
+  attackPattern: {fileID: 11400000, guid: bc6fe6b37cc92bed5ce915f5185040f9, type: 2}
 --- !u!114 &6267826929569153811
 MonoBehaviour:
   m_ObjectHideFlags: 0

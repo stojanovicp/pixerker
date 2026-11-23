@@ -29,7 +29,7 @@ public static class GameSession
 
     private static void ClearSession()
     {
-        Time.timeScale = 1f;
+        GamePause.Resume();
         WorldState.Reset();
 
         DestroyRoot(PlayerController.Instance);

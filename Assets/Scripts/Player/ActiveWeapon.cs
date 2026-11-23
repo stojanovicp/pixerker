@@ -56,6 +56,8 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     private void StartAttacking()
     {
+        if (GamePause.IsPaused) { return; }
+
         attackButtonDown = true;
     }
 
@@ -65,7 +67,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     }
 
     private void Attack() {
-        if (!attackButtonDown || CurrentActiveWeapon == null) { return; }
+        if (!attackButtonDown || CurrentActiveWeapon == null || GamePause.IsPaused) { return; }
         if (!weaponCooldowns.IsReady(CurrentWeaponInfo)) { return; }
 
         weaponCooldowns.StartCooldown(CurrentWeaponInfo);

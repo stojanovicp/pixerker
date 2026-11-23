@@ -14,7 +14,7 @@ public class VictoryScreenView : MonoBehaviour
     [SerializeField] private Button playAgainButton;
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button quitButton;
-    [Tooltip("Real-time delay so the boss's death can be seen before the screen appears.")]
+    [Tooltip("Delay so the boss's death can be seen before the screen appears. Scaled time, so it waits while the pause menu is open.")]
     [SerializeField] private float showDelay = 1.5f;
     [SerializeField] private string firstSceneName = "Scene_1";
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -51,10 +51,10 @@ public class VictoryScreenView : MonoBehaviour
 
     private IEnumerator ShowRoutine()
     {
-        yield return new WaitForSecondsRealtime(showDelay);
+        yield return new WaitForSeconds(showDelay);
 
         scoreText.text = $"Gold: {EconomyManager.Instance.CurrentGold.ToString(SCORE_FORMAT)}";
         victoryPanel.SetActive(true);
-        Time.timeScale = 0f;
+        GamePause.Pause();
     }
 }

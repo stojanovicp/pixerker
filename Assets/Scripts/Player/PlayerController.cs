@@ -57,6 +57,8 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void Update() {
+        if (GamePause.IsPaused) { return; }
+
         PlayerInput();
         AdjustPlayerFacingDirection();
     }
@@ -114,7 +116,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void Dash() {
-        if (PlayerHealth.Instance.IsDead) { return; }
+        if (PlayerHealth.Instance.IsDead || GamePause.IsPaused) { return; }
 
         if (!isDashing && Stamina.Instance.CurrentStamina > 0) {
             Stamina.Instance.UseStamina();

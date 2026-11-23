@@ -104,7 +104,7 @@ public class ActiveInventory : Singleton<ActiveInventory>
 
     private void DropActiveWeapon()
     {
-        if (PlayerHealth.Instance.IsDead) { return; }
+        if (PlayerHealth.Instance.IsDead || GamePause.IsPaused) { return; }
 
         InventorySlot activeSlot = slots[activeSlotIndex];
         WeaponInfo droppedWeaponInfo = activeSlot.GetWeaponInfo();
@@ -120,7 +120,7 @@ public class ActiveInventory : Singleton<ActiveInventory>
     }
 
     private void OnSlotKeyPressed(int slotNumber) {
-        if (PlayerHealth.Instance.IsDead) { return; }
+        if (PlayerHealth.Instance.IsDead || GamePause.IsPaused) { return; }
 
         SelectSlot(slotNumber - 1);
     }

@@ -14,6 +14,7 @@ The project started from a Unity course and was significantly extended afterward
 | Dash (uses stamina) | `Space` |
 | Select weapon slot | `1` – `5` |
 | Drop active weapon | `Q` |
+| Pause | `Esc` or `P` |
 
 ## Features
 

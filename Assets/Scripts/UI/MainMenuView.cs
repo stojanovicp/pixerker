@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-// Main menu: Start begins a new game, Quit leaves.
+// Main menu: Start begins a new game, Quit leaves (hidden on WebGL).
 public class MainMenuView : MonoBehaviour
 {
     [SerializeField] private Button startButton;
@@ -18,6 +18,6 @@ public class MainMenuView : MonoBehaviour
         }
 
         startButton.onClick.AddListener(() => GameSession.StartNewGame(firstSceneName));
-        quitButton.onClick.AddListener(GameSession.Quit);
+        GameSession.BindQuitButton(quitButton);
     }
 }

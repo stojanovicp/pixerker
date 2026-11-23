@@ -31,7 +31,7 @@ public class VictoryScreenView : MonoBehaviour
         victoryPanel.SetActive(false);
         playAgainButton.onClick.AddListener(() => GameSession.StartNewGame(firstSceneName));
         mainMenuButton.onClick.AddListener(() => GameSession.ReturnToMainMenu(mainMenuSceneName));
-        quitButton.onClick.AddListener(GameSession.Quit);
+        GameSession.BindQuitButton(quitButton);
     }
 
     private void OnEnable()

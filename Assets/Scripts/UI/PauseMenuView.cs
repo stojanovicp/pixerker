@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-// Esc opens and closes the pause menu: Resume, Main Menu, Quit. It cannot open while the player is dead or while
+// Esc or P opens and closes the pause menu: Resume, Main Menu, Quit. It cannot open while the player is dead or while
 // something else (the victory screen) has paused the game. Lives on an always-active object in the persistent UI.
 public class PauseMenuView : MonoBehaviour
 {
@@ -28,7 +28,7 @@ public class PauseMenuView : MonoBehaviour
         pausePanel.SetActive(false);
         resumeButton.onClick.AddListener(Close);
         mainMenuButton.onClick.AddListener(() => GameSession.ReturnToMainMenu(mainMenuSceneName));
-        quitButton.onClick.AddListener(GameSession.Quit);
+        GameSession.BindQuitButton(quitButton);
     }
 
     private void OnEnable()

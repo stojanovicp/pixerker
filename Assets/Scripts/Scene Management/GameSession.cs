@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // Starts, restarts and leaves a play session. A new session clears the in-memory world state and destroys the
 // persistent roots (Player, Managers, UI_Canvas); the loaded scene's own copies then become the fresh instances.
@@ -18,7 +19,19 @@ public static class GameSession
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    public static void Quit()
+    // Browsers cannot close the page from the game, so on WebGL the Quit button is hidden instead of wired.
+    public static void BindQuitButton(Button quitButton)
+    {
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            quitButton.gameObject.SetActive(false);
+            return;
+        }
+
+        quitButton.onClick.AddListener(Quit);
+    }
+
+    private static void Quit()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

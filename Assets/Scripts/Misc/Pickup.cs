@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
+// A coin or globe. Pops out when spawned; the PickupMagnet on the same object pulls it to the player.
 public class Pickup : MonoBehaviour
 {
     private enum PickUpType
@@ -12,24 +12,13 @@ public class Pickup : MonoBehaviour
 
     [SerializeField] private PickUpType pickUpType;
     [SerializeField] private int amount = 1;
-    [SerializeField] private float pickUpDistance = 4f;
-    [FormerlySerializedAs("accelartionRate")]
-    [SerializeField] private float accelerationRate = 0.6f;
-    [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private AnimationCurve animationCurve;
     [SerializeField] private float heightY = 1.5f;
     [SerializeField] private float popDuration = 1f;
     [Tooltip("Half-size of the area a normal drop pops out to (x, y).")]
     [SerializeField] private Vector2 randomPopRange = new Vector2(2f, 1f);
 
-    private Vector3 moveDir;
-    private Rigidbody2D rb;
     private DroppedCoinRecord droppedRecord;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     // Persistent coin (dropped on player death): its amount and landing position come from the record.
     public void InitializeAsDropped(DroppedCoinRecord record)
@@ -49,32 +38,6 @@ public class Pickup : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (PlayerHealth.Instance.IsDead)
-        {
-            moveDir = Vector3.zero;
-            return;
-        }
-
-        Vector3 playerPos = PlayerController.Instance.transform.position;
-
-        if(Vector3.Distance(transform.position, playerPos) < pickUpDistance)
-        {
-            moveDir = (playerPos - transform.position).normalized;
-            moveSpeed += accelerationRate;
-        }
-        else
-        {
-            moveDir = Vector3.zero;
-            moveSpeed = 0f;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        rb.linearVelocity = moveDir * moveSpeed * Time.deltaTime;
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.GetComponent<PlayerController>() && !PlayerHealth.Instance.IsDead)

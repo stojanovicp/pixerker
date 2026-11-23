@@ -116,7 +116,7 @@ public class ActiveInventory : Singleton<ActiveInventory>
 
         Vector2 dropPosition = (Vector2)PlayerController.Instance.transform.position + dropOffset;
         string sceneName = SceneManager.GetActiveScene().name;
-        WorldState.AddDroppedWeapon(new DroppedWeaponRecord(sceneName, droppedWeaponInfo, dropPosition), dropPosition);
+        WorldState.AddDroppedWeapon(new DroppedWeaponRecord(sceneName, droppedWeaponInfo, dropPosition, false), dropPosition);
     }
 
     private void OnSlotKeyPressed(int slotNumber) {

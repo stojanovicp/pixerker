@@ -48,7 +48,7 @@ public class PlayerRespawn : MonoBehaviour
 
         foreach (WeaponInfo weaponInfo in ActiveInventory.Instance.TakeDroppableWeapons())
         {
-            DroppedWeaponRecord record = new DroppedWeaponRecord(sceneName, weaponInfo, GetScatterPoint(deathPosition));
+            DroppedWeaponRecord record = new DroppedWeaponRecord(sceneName, weaponInfo, GetScatterPoint(deathPosition), true);
             WorldState.AddDroppedWeapon(record, deathPosition);
         }
 

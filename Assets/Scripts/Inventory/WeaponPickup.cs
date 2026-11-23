@@ -6,6 +6,8 @@ public class WeaponPickup : MonoBehaviour
 {
     [SerializeField] private WeaponInfo weaponInfo;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [Tooltip("Disabled on the prefab; only weapons dropped on death turn it on.")]
+    [SerializeField] private PickupMagnet magnet;
 
     [Header("Pop-out arc (dropped weapons spawned away from their landing position)")]
     [SerializeField] private AnimationCurve popCurve;
@@ -38,6 +40,7 @@ public class WeaponPickup : MonoBehaviour
         droppedRecord = record;
         weaponInfo = record.WeaponInfo;
         isArmed = armImmediately;
+        magnet.enabled = record.AttractsToPlayer;
         RefreshSprite();
     }
 

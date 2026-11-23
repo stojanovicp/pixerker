@@ -48,10 +48,12 @@ public class InventorySlot : MonoBehaviour
         activeHighlight.SetActive(isHighlighted);
     }
 
+    // Switches the icon's GameObject too, so an icon object left inactive in the prefab can't hide a weapon.
     private void RefreshIcon()
     {
         iconImage.sprite = IsEmpty ? null : weaponInfo.icon;
         iconImage.enabled = !IsEmpty;
+        iconImage.gameObject.SetActive(!IsEmpty);
     }
 
     private void UpdateCooldownFill()

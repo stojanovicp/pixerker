@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
-// A lobbed projectile: arcs to a landing position with a ground shadow, then spawns its splatter.
+// A lobbed projectile: arcs to a landing position with a ground shadow, then spawns its splatter (impact prefab).
 // The thrower must call Initialize right after Instantiate.
 public class FallingProjectile : MonoBehaviour
 {
+    // Raised at the landing position, just before the impact prefab spawns (e.g. BlastDamage deals its damage here).
+    public event Action<Vector2> Landed;
+
     [SerializeField] private float duration = 1f;
     [SerializeField] private AnimationCurve animationCurve;
     [SerializeField] private float heightY = 3f;
@@ -43,6 +47,7 @@ public class FallingProjectile : MonoBehaviour
         yield return ArcMovement.Move(transform, transform.position, landingPosition, animationCurve, heightY, duration);
 
         Destroy(shadow);
+        Landed?.Invoke(transform.position);
         Instantiate(splatterPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

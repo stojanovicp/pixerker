@@ -73,6 +73,7 @@ tmpinst-dir.stamp
 # Builds
 /*_BackUpThisFolder_ButDontShipItWithYourGame/
 /*_BurstDebugInformation_DoNotShip/
+/Data/
 *.apk
 *.aab
 *.obb

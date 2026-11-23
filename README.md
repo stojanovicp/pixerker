@@ -1,5 +1,7 @@
 # Pixerker
 
+**Play in browser:** https://stojanovicp.itch.io/pixerker
+
 A 2D top-down action RPG built in Unity 6 (URP 2D, Cinemachine 3, Input System). Fight through ten connected areas, defeat four bosses to collect their weapons, and take down the Black Ghost to win.
 
 The project started from a Unity course and was significantly extended afterwards: inventory, new weapons, enemy AI, bosses, world persistence, death drops and menus were all added on top of the course base.

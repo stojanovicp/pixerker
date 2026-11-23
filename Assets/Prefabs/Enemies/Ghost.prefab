@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooter
   bulletPrefab: {fileID: 5703028919142120387, guid: 7a7c5770e1d642b428070295b12e8622, type: 3}
-  attackPattern: {fileID: 11400000, guid: bc6fe6b37cc92bed5ce915f5185040f9, type: 2}
+  attackPattern: {fileID: 11400000, guid: eea9b1d2cce0ce04546d701096943c2c, type: 2}
 --- !u!114 &6267826929569153811
 MonoBehaviour:
   m_ObjectHideFlags: 0

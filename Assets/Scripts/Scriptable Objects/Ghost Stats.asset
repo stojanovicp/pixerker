@@ -19,5 +19,5 @@ MonoBehaviour:
   loseRange: 11
   attackRange: 5
   stoppingDistance: 4
-  attackCooldown: 2
+  attackCooldown: 1.5
   roamDirectionChangeTime: 2

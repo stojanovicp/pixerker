@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18de2c745e50437b4f31b58d44095b1f, type: 3}
-  m_Name: Ghost Sweep Pattern
+  m_Name: Ghost Fan Pattern
   m_EditorClassIdentifier: Assembly-CSharp::AttackPattern
-  burstCount: 12
-  projectilesPerBurst: 14
-  timeBetweenProjectiles: 0.035714287
+  burstCount: 1
+  projectilesPerBurst: 3
+  timeBetweenProjectiles: 0
   timeBetweenBursts: 0
-  restTime: 0.1
-  angleSpread: 82
-  oscillate: 1
+  restTime: 0
+  angleSpread: 30
+  oscillate: 0
   spawnDistance: 0.3
-  projectileSpeed: 7
+  projectileSpeed: 6
   projectileDamage: 8
   targetScatterRadius: 0

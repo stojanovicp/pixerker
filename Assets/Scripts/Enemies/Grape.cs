@@ -2,13 +2,15 @@ using UnityEngine;
 
 // Lobs a volley of grapes at the player, following an AttackPattern. The volley starts from the attack
 // animation's event; the first grape of each burst lands on the player, the rest scatter around them.
-public class Grape : MonoBehaviour, IEnemy
+// Attack uses the default pattern; a Boss passes its own patterns through AttackWith.
+public class Grape : MonoBehaviour, IEnemy, IPatternAttacker
 {
     [SerializeField] private FallingProjectile grapeProjectilePrefab;
     [SerializeField] private AttackPattern attackPattern;
 
     private Animator myAnimator;
     private SpriteRenderer spriteRenderer;
+    private AttackPattern currentPattern;
     private Vector2 volleyTarget;
 
     readonly int ATTACK_HASH = Animator.StringToHash("Attack");
@@ -17,6 +19,7 @@ public class Grape : MonoBehaviour, IEnemy
     {
         myAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        currentPattern = attackPattern;
 
         if (grapeProjectilePrefab == null || attackPattern == null)
         {
@@ -27,15 +30,21 @@ public class Grape : MonoBehaviour, IEnemy
 
     public void Attack()
     {
-        if (!enabled) { return; }
+        AttackWith(attackPattern);
+    }
 
+    public void AttackWith(AttackPattern pattern)
+    {
+        if (!enabled || pattern == null) { return; }
+
+        currentPattern = pattern;
         myAnimator.SetTrigger(ATTACK_HASH);
         spriteRenderer.flipX = transform.position.x > PlayerController.Instance.transform.position.x;
     }
 
     public void SpawnProjectileAnimEvent()
     {
-        StartCoroutine(AttackPatternRunner.Run(attackPattern, AimVolley, ThrowGrape));
+        StartCoroutine(AttackPatternRunner.Run(currentPattern, AimVolley, ThrowGrape));
     }
 
     private void AimVolley(int burstIndex, int projectileCount)
@@ -47,9 +56,10 @@ public class Grape : MonoBehaviour, IEnemy
     {
         Vector2 landingPosition = projectileIndex == 0
             ? volleyTarget
-            : volleyTarget + Random.insideUnitCircle * attackPattern.targetScatterRadius;
+            : volleyTarget + Random.insideUnitCircle * currentPattern.targetScatterRadius;
 
         FallingProjectile grape = Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
+        grape.SetImpactDamage(currentPattern.projectileDamage);
         grape.Initialize(landingPosition);
     }
 }

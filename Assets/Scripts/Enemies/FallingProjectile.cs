@@ -18,11 +18,18 @@ public class FallingProjectile : MonoBehaviour
 
     private Vector2 landingPosition;
     private bool isInitialized;
+    private int? impactDamage;
 
     public void Initialize(Vector2 targetLandingPosition)
     {
         landingPosition = targetLandingPosition;
         isInitialized = true;
+    }
+
+    // Overrides the damage of the impact's ExplosionSplatter (enemy grapes take it from their AttackPattern).
+    public void SetImpactDamage(int damage)
+    {
+        impactDamage = damage;
     }
 
     private void Start()
@@ -48,7 +55,14 @@ public class FallingProjectile : MonoBehaviour
 
         Destroy(shadow);
         Landed?.Invoke(transform.position);
-        Instantiate(splatterPrefab, transform.position, Quaternion.identity);
+
+        GameObject impact = Instantiate(splatterPrefab, transform.position, Quaternion.identity);
+
+        if (impactDamage.HasValue && impact.TryGetComponent(out ExplosionSplatter splatter))
+        {
+            splatter.SetDamage(impactDamage.Value);
+        }
+
         Destroy(gameObject);
     }
 }

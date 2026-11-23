@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    // Raised when the enemy starts chasing the player (leaves Roam). Bosses use it to engage.
+    public event Action PlayerDetected;
+
     [SerializeField] private EnemyStats stats;
     [SerializeField] private MonoBehaviour enemyType;
 
@@ -47,7 +51,14 @@ public class EnemyAI : MonoBehaviour
 
     public void ChangeState(IState nextState)
     {
+        bool detectsPlayer = stateMachine.CurrentState == RoamState && nextState == ChaseState;
+
         stateMachine.ChangeState(nextState);
+
+        if (detectsPlayer)
+        {
+            PlayerDetected?.Invoke();
+        }
     }
 
     public void MoveInDirection(Vector2 direction)

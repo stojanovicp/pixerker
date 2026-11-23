@@ -12,6 +12,11 @@ public class ExplosionSplatter : MonoBehaviour
         spriteFade = GetComponent<SpriteFade>();
     }
 
+    public void SetDamage(int splatterDamage)
+    {
+        damage = splatterDamage;
+    }
+
     private void Start()
     {
         StartCoroutine(spriteFade.SlowFadeRoutine());

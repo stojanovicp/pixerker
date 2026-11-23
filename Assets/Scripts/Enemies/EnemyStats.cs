@@ -8,6 +8,8 @@ public class EnemyStats : ScriptableObject
     public int contactDamage = 1;
     [Tooltip("Bosses take only a share of their max HP from Execute hits.")]
     public bool isBoss;
+    [Tooltip("Multiplies the knockback this enemy receives (1 = full, 0 = none).")]
+    [Min(0f)] public float knockbackMultiplier = 1f;
 
     [Header("Ranges")]
     public float detectionRange = 6f;

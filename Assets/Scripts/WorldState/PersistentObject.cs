@@ -9,6 +9,7 @@ public class PersistentObject : MonoBehaviour
 {
     private string sceneName;
     private string objectId;
+    private bool isExcluded;
 
     private void Awake()
     {
@@ -25,6 +26,14 @@ public class PersistentObject : MonoBehaviour
 
     public void MarkRemoved()
     {
+        if (isExcluded) { return; }
+
         WorldState.MarkRemoved(sceneName, objectId);
+    }
+
+    // For copies spawned at runtime (boss summons): their removal is not recorded.
+    public void ExcludeFromWorldState()
+    {
+        isExcluded = true;
     }
 }

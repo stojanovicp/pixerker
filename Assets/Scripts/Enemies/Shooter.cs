@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-// Fires bullets in a cone centred on the player, following an AttackPattern.
-public class Shooter : MonoBehaviour, IEnemy
+// Fires bullets in a cone centred on the player, following an AttackPattern. Attack uses the default pattern;
+// a Boss passes its own patterns through AttackWith.
+public class Shooter : MonoBehaviour, IEnemy, IPatternAttacker
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private AttackPattern attackPattern;
 
+    private AttackPattern currentPattern;
     private bool isShooting;
     private float sweepFromAngle;
     private float sweepToAngle;
@@ -23,15 +25,21 @@ public class Shooter : MonoBehaviour, IEnemy
 
     public void Attack()
     {
-        if (!enabled || isShooting) { return; }
-
-        StartCoroutine(ShootRoutine());
+        AttackWith(attackPattern);
     }
 
-    private IEnumerator ShootRoutine()
+    public void AttackWith(AttackPattern pattern)
+    {
+        if (!enabled || isShooting || pattern == null) { return; }
+
+        StartCoroutine(ShootRoutine(pattern));
+    }
+
+    private IEnumerator ShootRoutine(AttackPattern pattern)
     {
         isShooting = true;
-        yield return AttackPatternRunner.Run(attackPattern, BeginBurst, FireBullet);
+        currentPattern = pattern;
+        yield return AttackPatternRunner.Run(pattern, BeginBurst, FireBullet);
         isShooting = false;
     }
 
@@ -41,7 +49,7 @@ public class Shooter : MonoBehaviour, IEnemy
     {
         burstProjectileCount = projectileCount;
 
-        bool sweepsBack = attackPattern.oscillate && burstIndex % 2 == 1;
+        bool sweepsBack = currentPattern.oscillate && burstIndex % 2 == 1;
 
         if (sweepsBack)
         {
@@ -56,7 +64,7 @@ public class Shooter : MonoBehaviour, IEnemy
     {
         Vector2 directionToPlayer = PlayerController.Instance.transform.position - transform.position;
         float angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
-        float halfSpread = attackPattern.angleSpread / 2f;
+        float halfSpread = currentPattern.angleSpread / 2f;
 
         sweepFromAngle = angleToPlayer - halfSpread;
         sweepToAngle = angleToPlayer + halfSpread;
@@ -68,15 +76,15 @@ public class Shooter : MonoBehaviour, IEnemy
         float sweepProgress = burstProjectileCount > 1 ? (float)projectileIndex / (burstProjectileCount - 1) : 0.5f;
         float angle = Mathf.Lerp(sweepFromAngle, sweepToAngle, sweepProgress) * Mathf.Deg2Rad;
         Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        Vector2 spawnPosition = (Vector2)transform.position + direction * attackPattern.spawnDistance;
+        Vector2 spawnPosition = (Vector2)transform.position + direction * currentPattern.spawnDistance;
 
         GameObject newBullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
         newBullet.transform.right = direction;
 
         if (newBullet.TryGetComponent(out Projectile projectile))
         {
-            projectile.UpdateMoveSpeed(attackPattern.projectileSpeed);
-            projectile.SetEnemyProjectileDamage(attackPattern.projectileDamage);
+            projectile.UpdateMoveSpeed(currentPattern.projectileSpeed);
+            projectile.SetEnemyProjectileDamage(currentPattern.projectileDamage);
         }
     }
 }

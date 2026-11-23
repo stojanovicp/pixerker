@@ -22,4 +22,5 @@ MonoBehaviour:
   oscillate: 0
   spawnDistance: 0.3
   projectileSpeed: 7
+  projectileDamage: 16
   targetScatterRadius: 1.5

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 // A coin or globe. Pops out when spawned; the PickupMagnet on the same object pulls it to the player.
 public class Pickup : MonoBehaviour
@@ -11,7 +12,10 @@ public class Pickup : MonoBehaviour
     }
 
     [SerializeField] private PickUpType pickUpType;
-    [SerializeField] private int amount = 1;
+    [Tooltip("Gold, health or stamina given; rolled once per pickup between min and max (inclusive).")]
+    [FormerlySerializedAs("amount")]
+    [Min(0)] [SerializeField] private int minAmount = 1;
+    [Min(0)] [SerializeField] private int maxAmount = 1;
     [SerializeField] private AnimationCurve animationCurve;
     [SerializeField] private float heightY = 1.5f;
     [SerializeField] private float popDuration = 1f;
@@ -19,6 +23,17 @@ public class Pickup : MonoBehaviour
     [SerializeField] private Vector2 randomPopRange = new Vector2(2f, 1f);
 
     private DroppedCoinRecord droppedRecord;
+    private int amount;
+
+    private void OnValidate()
+    {
+        maxAmount = Mathf.Max(maxAmount, minAmount);
+    }
+
+    private void Awake()
+    {
+        amount = Random.Range(minAmount, maxAmount + 1);
+    }
 
     // Persistent coin (dropped on player death): its amount and landing position come from the record.
     public void InitializeAsDropped(DroppedCoinRecord record)

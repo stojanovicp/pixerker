@@ -173,6 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pickup
   pickUpType: 2
+  minAmount: 8
+  maxAmount: 15
   animationCurve:
     serializedVersion: 2
     m_Curve:

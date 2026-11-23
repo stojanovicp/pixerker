@@ -6,8 +6,9 @@ public class Projectile : MonoBehaviour
     [SerializeField] private GameObject particleOnHitPrefabVFX;
     [SerializeField] private bool isEnemyProjectile = false;
     [SerializeField] private float projectileRange = 10f;
-    [SerializeField] private int enemyProjectileDamage = 1;
-    
+
+    // Set by the Shooter from its AttackPattern. Player projectiles deal damage through DamageSource instead.
+    private int enemyProjectileDamage;
     private Vector3 startPosition;
 
     private void Start()
@@ -30,6 +31,11 @@ public class Projectile : MonoBehaviour
     public void UpdateMoveSpeed(float moveSpeed)
     {
         this.moveSpeed = moveSpeed;
+    }
+
+    public void SetEnemyProjectileDamage(int damage)
+    {
+        enemyProjectileDamage = damage;
     }
 
 

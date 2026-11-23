@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b730fed57cd7b97ea113b060f6735ee, type: 3}
   m_Name: Ghost Stats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  maxHealth: 4
+  maxHealth: 40
   moveSpeed: 1
-  contactDamage: 1
+  contactDamage: 10
   detectionRange: 8
   loseRange: 11
   attackRange: 5

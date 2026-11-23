@@ -77,6 +77,7 @@ public class Shooter : MonoBehaviour, IEnemy
         if (newBullet.TryGetComponent(out Projectile projectile))
         {
             projectile.UpdateMoveSpeed(attackPattern.projectileSpeed);
+            projectile.SetEnemyProjectileDamage(attackPattern.projectileDamage);
         }
     }
 }

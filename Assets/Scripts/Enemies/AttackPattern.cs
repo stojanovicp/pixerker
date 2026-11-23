@@ -21,6 +21,8 @@ public class AttackPattern : ScriptableObject
     public bool oscillate;
     [Min(0.1f)] public float spawnDistance = 0.3f;
     [Min(0.1f)] public float projectileSpeed = 7f;
+    [Tooltip("Damage each bullet deals to the player.")]
+    [Min(0)] public int projectileDamage = 8;
 
     [Header("Lobbed projectiles (Grape)")]
     [Tooltip("The first projectile of a burst lands on the target; the others land within this radius of it.")]

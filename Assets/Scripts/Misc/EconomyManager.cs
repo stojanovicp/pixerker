@@ -4,6 +4,8 @@ public class EconomyManager : Singleton<EconomyManager>
 {
     public static event Action<int> GoldChanged;
 
+    public int CurrentGold => currentGold;
+
     private int currentGold = 0;
 
     private void Start()
